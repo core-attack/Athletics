@@ -1,0 +1,109 @@
+<div class="sign-up">
+  <form class="form-horizontal" action="?action=register" method="post">
+    <div class="control-group">
+      <label class="control-label" for="inputName">Фамилия</label>
+      <div class="controls">
+        <input type="text" class="inputName" placeholder="Фамилия" name="name">
+        <span class="help-inline" id="helpName"></span>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="inputSName">Имя</label>
+      <div class="controls">
+        <input type="text" class="inputSName" placeholder="Имя" name="sName">
+        <span class="help-inline" id="helpSName"></span>
+      </div>
+    </div>
+      <div class="control-group">
+          <label class="control-label" for="inputSName">Отчество</label>
+          <div class="controls">
+              <input type="text" class="inputLName" placeholder="Отчество" name="lName">
+              <span class="help-inline" id="helpSName"></span>
+          </div>
+      </div>
+    <div class="control-group">
+      <label class="control-label" for="inputSex">Пол</label>
+      <div class="sex">
+        <label class="checkbox inline">
+          <input type="checkbox" id="checkboxBoy" value="boy" onclick="boyChecked();"> M
+        </label>
+        <label class="checkbox inline">
+          <input type="checkbox" id="checkboxGirl" value="girl" onclick="girlChecked();"> Ж
+        </label>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="inputEmail">E-mail</label>
+      <div class="controls">
+        <input type="text" class="inputEmail" placeholder="E-mail" name="email">
+          <span class="help-inline" id="helpName"></span>
+        </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="inputBorndate">Дата рождения</label>
+      <div class="controls">
+          <input type="text" class="inputBorndate" placeholder="B-day" name="borndate">
+          <span class="help-inline" id="helpName"></span>
+      </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="inputTin">ИНН</label>
+        <div class="controls">
+          <input type="text" class="inputTin" placeholder="ИНН" name="tin">
+          <span class="help-inline" id="helpName"></span>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="inputPassport">Паспорт (серия, номер)</label>
+        <div class="controls">
+          <input type="text" class="inputPassropt" placeholder="Passport" name="passport">
+          <span class="help-inline" id="helpName"></span>
+        </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="inputLogin">Логин</label>
+      <div class="controls">
+        <input type="text" class="inputLogin" placeholder="Логин" name="login">
+          <span class="help-inline" id="helpName"></span>
+        </div>
+    </div>
+
+    <div class="change-password">
+      <div class="control-group">
+          <label class="control-label" for="inputOldPass">Старый пароль</label>
+          <div class="controls">
+            <input type="text" class="inputOldPass" placeholder="Введите старый пароль" name="oldPassword">
+          </div>
+      </div>
+      <div class="control-group">
+          <label class="control-label" for="inputNewPass">Новый пароль</label>
+          <div class="controls">
+              <input type="text" class="inputNewPass" placeholder="Введите новый пароль" name="newPassword">
+          </div>
+      </div>
+      <div class="control-group">
+          <label class="control-label" for="inputCorrPass">Повторите пароль</label>
+          <div class="controls">
+              <input type="text" class="inputCorrPass" placeholder="Повторите новый пароль" name="repeatNewPassword">
+              <span class="inputCorrPass-help" id="helpName"></span>
+          </div>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="inputType">Роль</label>
+      <div class="controls">
+          <span class="help-inline" id="helpName"></span>
+          <select class="selectType" placeholder="Type" name="role">
+              <option>Спортсмен</option>
+              <option>Тренер</option>
+          </select>
+      </div>
+    </div>
+    <div class="control-group">
+      <div class="controls">
+        <button type="submit" class="btn btn-primary sign-up" onclick="signUp();">Зарегистрироваться</button>
+          <!--<a href="?action=register" type="submit" class="btn btn-primary sign-in" onclick="signUp();">Зарегистрироваться</a>-->
+        </div>
+      </div>
+    </form>
+  </div>

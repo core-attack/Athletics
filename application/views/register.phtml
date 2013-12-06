@@ -1,0 +1,26 @@
+<?php
+
+echo $this->partial('header', $this);
+
+echo "<";
+echo $_POST["name"];
+echo $_POST["sName"];
+echo $_POST["lName"];
+echo $_POST["email"];
+echo $_POST["borndate"];
+echo $_POST["tin"];
+echo $_POST["passport"];
+echo $_POST["login"];
+echo $_POST["oldPassword"];
+echo $_POST["newPassword"];
+echo $_POST["repeatPassword"];
+echo $_POST["role"];
+echo ">";
+DBunit::ConnectToDB();
+DBunit::createUser($_POST["name"], $_POST["sName"], $_POST["lName"], $_POST["email"], 1,/*$_POST["borndate"],*/ $_POST["tin"], $_POST["passport"], $_POST["role"], $_POST["login"], $_POST["password"]);
+
+
+
+
+echo $this->partial('footer', $this); ?>
+

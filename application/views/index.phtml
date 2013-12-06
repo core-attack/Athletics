@@ -1,0 +1,13 @@
+<?php
+//phpinfo();
+//следующие две строки выводят все ошибки на экран
+ini_set('display_errors',1);
+error_reporting(E_ALL);
+mysql_error();
+echo $this->partial('header', $this); ?>
+<div class="body">
+    <?php echo $this->partial('login', $this); ?>
+
+    
+</div>
+<?php echo $this->partial('footer', $this); ?>

@@ -1,0 +1,20 @@
+<div id="workouts">
+    <?php
+    $workouts = DBunit::getAllWorkouts(2);
+    $res = "&lttable id='workouts'&gt";
+    for ($i = 0; $i < count($workouts); $i++)
+    {
+        //print_r($workouts);
+        //die();
+        $res = $res . "&lttr>"
+            . "&lttd&gt" . $workouts[4]['date'] . "&lt/td&gt"
+            . "&lttd&gt" . $workouts[4]['works'] . "&lt/td&gt"
+            . "&lttd&gt" . $workouts[4]['results'] . "&lt/td&gt"
+            . "&lt/tr&gt";
+    }
+
+    $table = $res . "&lt/table&gt";
+    ?>
+
+    <?php echo $table?>
+</div>

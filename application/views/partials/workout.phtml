@@ -1,0 +1,51 @@
+<div id="workout">
+    <?
+        $date = "12 июля 2012 г.";
+        //$works_and_results = htmlspecialchars_decode("&lttable&gt&lttr&gt&lttd&gt800&lt/td&gt&lttd&gt02:00.00&lt/td&gt&lttr&gt&lttd&gt400&lt/td&gt&lttd&gt01:00.00&lt/td&gt&lt/table&gt");
+        $works_and_results = DBunit::getWorkout(1);
+        $works = "800 600 400 200";
+        $results = "02:00.00 01:25.00 01:00:00 00:25.00";
+        if (count($works_and_results) > 0)
+        {
+            $works = "";
+            $results = "";
+            $date = $works_and_results[0]['workout_date'];
+            for ($i = 0; $i < count($works_and_results); $i++)
+            {
+                $works = $works . $works_and_results[$i]['work'] . ' ';
+                $results = $results . $works_and_results[$i]['result'] . ' ';
+            }
+
+        }
+    ?>
+    <a id="date">
+        <?php echo $date?>
+    </a>
+    <a id="work">
+        <?php echo $works?>
+    </a>
+    <a id="result">
+        <?php echo $results?>
+    </a>
+    <a id="ghost">
+    </a>
+
+    <!--<table class="table">
+        <tr>
+            <th id="date">
+                Дата
+            </th>
+            <th id="work&result">
+                Работа и результат
+            </th>
+        </tr>
+       <tr>
+           <td id="date">
+               <?php echo $date?>
+           </td>
+           <td id="work&result">
+               <?php echo $works_and_results?>
+           </td>
+       </tr>
+    </table>-->
+</div>

@@ -1,0 +1,6 @@
+<?php
+if ($this->show_login)
+    echo $this->partial('login', $this);
+else
+    echo $this->partial('admin', $this);
+?>

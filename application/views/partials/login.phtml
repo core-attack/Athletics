@@ -1,0 +1,27 @@
+<div class="login">
+  <form class="form-horizontal" action="?action=main" method="post">
+    <div class="control-group">
+      <label class="control-label" for="inputEmail">Логин</label>
+      <div class="controls">
+        <input type="text" class="inputLogin" id="inputLogin" placeholder="Login" onchange="loginBlurFocus();" name="login">
+        <span class="help-inline" id="helpLogin"></span>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="inputPassword">Пароль</label>
+      <div class="controls">
+        <input type="password" class="inputPassword" id="inputPassword" placeholder="Password" onkeypress="passBlurFocus();" name="password">
+        <span class="help-inline" id="helpPassword"></span>
+      </div>
+    </div>
+    <div class="control-group">
+      <div class="controls">
+        <label class="checkbox">
+          <input type="checkbox" onclick=""> Запомнить меня
+        </label>
+        <input type="submit" value="Войти" class="btn btn-primary sign-in" onclick="signIn();">
+        <a href="?action=signup" class="btn sign-up" onclick="signUp();">Зарегистрироваться</a>
+       </div>
+     </div>
+   </form>
+ </div>

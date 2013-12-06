@@ -1,0 +1,77 @@
+@charset "utf-8";
+* {
+	padding: 0;
+	margin: 0;
+}
+
+html {
+	margin: 0px;
+	padding: 0px;
+}
+a, span {
+	margin: 0px;
+	padding: 0px;
+}
+body {
+	margin:0px;
+	padding: 0px;
+	background-color: transparent;
+	font-family: Arial;
+    color: black;
+}
+#menu
+{
+    border: 1px solid blue;
+    float: left;
+    width: 150px;
+    margin-right: 20px;
+    min-height: 200px;
+}
+#container
+{
+    border: 1px solid blue;
+    margin-left: 170px;
+    min-height: 200px;
+}
+#header
+{
+	padding: 30px;
+}
+#footer
+{
+	padding: 20px;
+}
+.sex
+{
+	margin-left: 180px;
+}
+/*формы input-label*/
+.control-group{
+    width: 450px;
+}
+/*div смены пароля*/
+.change-password{
+}
+
+/*тренировка*/
+#workout{}
+
+#workout a{}
+
+#workout a#date{
+}
+
+#workout a#work{
+}
+
+#workout a#result{
+}
+
+#workout a#ghost{
+    width: 5000px;
+}
+
+#workout a#date, a#work, a#result, a#ghost{
+    display: inline-block;
+    padding: 10px;
+}

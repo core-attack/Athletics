@@ -1,0 +1,75 @@
+<?php
+echo $this->partial('header', $this);
+echo $_POST["login"];
+echo "1";
+
+if (DBunit::checkLoginPassword($_POST["login"], $_POST["password"]))
+{
+    echo "2";
+    switch(DBunit::getId($_POST["login"], $_POST["password"]))
+    {
+        //администратор
+        case 1:{}
+            break;
+        //спортсмен
+        case 2:{
+            //форма записи тренировок
+            //личные данные
+            echo $this->partial('information-card', $this);
+            //последние тренировки
+            echo $this->partial('workouts', $this);
+            //статистика
+            echo $this->partial('statistic', $this);
+
+            //предстоящие соревнования
+            //план тренировок
+        }
+            break;
+        //тренер
+        case 3:{
+            //форма записи планов тренировок
+            //последние планы тренировок
+            //личные данные
+            echo $this->partial('information-card', $this);
+            //предстоящие соревнования
+        }
+            break;
+    }
+    //echo $this->partial('workouts', $this);
+
+    //echo $this->partial('statistic', $this);
+
+    //тут будет выбор между ролями
+    //echo $this->partial('athlete', $this);
+
+    //echo $this->partial('coach', $this);
+}
+else{
+    echo "3";
+    header("Такого пользователя в системе нет.");
+}
+
+//если пользователь не менял пароль
+if ($_POST["newPassword"] == "")
+{
+    DBunit::updateUserWithoutPassword($user_id, $_POST["name"], $_POST["sName"], $_POST["lName"], $_POST["borndate"], $_POST["tin"], $_POST["passport"], $_POST["login"]);
+    echo "Информация обновлена";
+}
+//решил поменять и пароль
+else if (DBunit::getPassword($_POST["login"]) != $_POST["newPassword"])
+{
+    if ($_POST["newPassword"] == $_POST["repeatNewPassword"])
+    {
+        DBunit::updateUser($user_id, $_POST["name"], $_POST["sName"], $_POST["lName"], $_POST["borndate"], $_POST["tin"], $_POST["passport"], $_POST["login"], $_POST["password"]);
+        echo "Информация обновлена";
+    }
+    else
+    {
+        echo "Пароли не совпадают!";
+    }
+}
+//<div class="body">
+//</div>
+
+
+echo $this->partial('footer', $this); ?>
