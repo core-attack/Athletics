@@ -1,5 +1,50 @@
 ﻿//состояния объектов, в частности инпутов
 //var stations = {"warning", "error", "info", "success"};
+var success = "<span class=\"label label-success\">Тренировка записана</span>";
+var danger = "<span class=\"label label-danger\">Произошла ошибка</span>";
+function setWorkout()
+{
+    var date = $("#inputDate").val();
+    var work = $("#inputWork").val();
+    var result = $("#inputResult").val();
+
+    alert("типа записали");
+
+    $("#button-set-workout").parent().append(success);
+}
+
+function getXmlHttp(){
+    try {
+        return new ActiveXObject("Msxml2.XMLHTTP");
+    } catch (e) {
+        try {
+            return new ActiveXObject("Microsoft.XMLHTTP");
+        } catch (ee) {
+        }
+    }
+    if (typeof XMLHttpRequest!='undefined') {
+        return new XMLHttpRequest();
+    }
+}
+
+// Получить данные с url и вызывать cb - коллбэк c ответом сервера
+function getUrl(url, cb) {
+    var xmlhttp = getXmlHttp();
+    // IE кэширует XMLHttpRequest запросы, так что добавляем случайный параметр к URL
+    // (хотя можно обойтись правильными заголовками на сервере)
+    xmlhttp.open("GET", url+'?r='+Math.random());
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4) {
+            cb(
+                xmlhttp.status,
+                xmlhttp.getAllResponseHeaders(),
+                xmlhttp.responseText
+            );
+        }
+    }
+    xmlhttp.send(null);
+}
+
 
 //авторизация пользователя
 function signIn() {
