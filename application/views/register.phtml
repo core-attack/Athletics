@@ -1,26 +1,22 @@
 <?php
 
 echo $this->partial('header', $this);
-
-echo "<";
-echo $_POST["name"];
-echo $_POST["sName"];
-echo $_POST["lName"];
-echo $_POST["email"];
-echo $_POST["borndate"];
-echo $_POST["tin"];
-echo $_POST["passport"];
-echo $_POST["login"];
-echo $_POST["oldPassword"];
-echo $_POST["newPassword"];
-echo $_POST["repeatPassword"];
-echo $_POST["role"];
-echo ">";
-DBunit::ConnectToDB();
-DBunit::createUser($_POST["name"], $_POST["sName"], $_POST["lName"], $_POST["email"], 1,/*$_POST["borndate"],*/ $_POST["tin"], $_POST["passport"], $_POST["role"], $_POST["login"], $_POST["password"]);
-
-
-
-
+if (DBunit::checkLogin($_POST["login"]))
+{
+    echo "Пользователь с таким логином уже зарегистрирован. Извините, Вам придется придумать себе новый логин.";
+    echo $this->partial('sign-up', $this);
+}
+else
+{
+    $role = 0;
+    if ($_POST["role"] == "Спортсмен")
+        $role = 2;
+    else if ($_POST["role"] == "Тренер")
+        $role = 3;
+    DBunit::ConnectToDB();
+    DBunit::createUser($_POST["name"], $_POST["sName"], $_POST["lName"], $_POST["email"], 1,/*$_POST["borndate"],*/ $_POST["tin"], $_POST["passport"], $role, $_POST["login"], $_POST["newPassword"]);
+echo "Вы успешно зарегистрированы";
+}
 echo $this->partial('footer', $this); ?>
+
 
