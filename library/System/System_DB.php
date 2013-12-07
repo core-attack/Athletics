@@ -135,18 +135,40 @@ class DBunit {
     {
         self::ConnectToDB();
         $query = "SELECT login, password
-				  FROM " . ConstUnit::TABLE_USERS;
+				  FROM " . ConstUnit::TABLE_USERS .
+                 " WHERE login = '" . $login . "' and password = '" . $password . "'";
+        //echo '<br>' . $query . ' '. '<br>';
         $result = mysql_query($query) or die('Query failed: ' . mysql_error());
-        $res = array();
         while ($data = mysql_fetch_object($result))
         {
-            $res[] = array('login' => $data->login,
-                'password' => $data->password);
+            if ($data->login == $login && $data->password == $password)
+            {
+                //echo "Пользователь найден";
+                return true;
+            }
+            //echo $data->login . ' ' . $data->password . '<br>';
         }
         mysql_free_result($result);
         self::CloseConnection();
-        if ($res['login'] == $login && $res['login'] == $password)
-            return true;
+        return false;
+    }
+
+    //проверка на наличие такого логина в БД
+    static function checkLogin($login)
+    {
+        self::ConnectToDB();
+        $query = "SELECT login, password
+				  FROM " . ConstUnit::TABLE_USERS .
+            " WHERE login = '" . $login . "'";
+        echo '<br>' . $query . ' '. '<br>';
+        $result = mysql_query($query) or die('Query failed: ' . mysql_error());
+        while ($data = mysql_fetch_object($result))
+        {
+            if ($data->login == $login)
+                return true;
+        }
+        mysql_free_result($result);
+        self::CloseConnection();
         return false;
     }
 
@@ -163,7 +185,7 @@ class DBunit {
     static function getPasswordById($user_id)
     {
         $query = "SELECT password
-				  FROM " . ConstUnit::TABLE_USERS . " where id = " . $user_id;
+				  FROM " . ConstUnit::TABLE_USERS . " where id = '" . $user_id . "'";
         $result = mysql_query($query) or die('Query failed: ' . mysql_error());
         return mysql_fetch_object($result)->password;
     }
@@ -172,9 +194,34 @@ class DBunit {
     static function getRoleById($user_id)
     {
         $query = "SELECT role_id
-				  FROM " . ConstUnit::TABLE_USERS . " where id = " . $user_id;
+				  FROM " . ConstUnit::TABLE_USERS . " where id = " . $user_id . "";
         $result = mysql_query($query) or die('Query failed: ' . mysql_error());
         return mysql_fetch_object($result)->role_id;
+    }
+
+    //данные пользователя
+    static function getUserInfo($user_id)
+    {
+        $query = "SELECT name, sname, lname, email, borndate, tin, passport, login
+				  FROM " . ConstUnit::TABLE_USERS . " where id = '" . $user_id . "'";
+        $result = mysql_query($query) or die('Query failed: ' . mysql_error());
+        while ($data = mysql_fetch_object($result))
+        {
+            return array(
+                "name"     => $data->name,
+                "sname"    => $data->sname,
+                "lname"    => $data->lname,
+                "email"    => $data->email,
+                "borndate" => $data->borndate,
+                "tin"      => $data->tin,
+                "passport" => $data->passport,
+                "login"    => $data->login
+            );
+        }
+
+
+
+
     }
 
     static function getPasswordByLogin($login)
@@ -254,7 +301,7 @@ class DBunit {
             " (id, name, sname, lname, email, category_id, tin, passport, role_id, login, password) " .
             " VALUES ( '" . '' . "', '" . $name . "', '" . $lname . "', '" . $sname . "', '" . $email . "', '"
             . $category_id . "' , "/*to_date('" . $borndate . "', dd.mm.yyyy) , '"*/
-            . $TIN . " , '" . $passport . "', '". 1 . "', '" .$login . "', '" .$password. "'   );";
+            . $TIN . " , '" . $passport . "', '". $role_id . "', '" .$login . "', '" .$password. "');";
         self::requestToDB($query);
     }
     static function createWorkoutPlan($week_day, $workout_week_plan_id)
@@ -300,21 +347,19 @@ class DBunit {
         $query = "select w.workout_date, r.work, r.result from " . ConstUnit::TABLE_WORKOUTS . " w," . ConstUnit::TABLE_RESULTS . " r where w.id = " . $workout_id .
         " and w.id = r.workout_id";
         $result = mysql_query($query) or die('Query failed: ' . mysql_error());
-        $numColumns = mysql_num_rows($result);
-        $res = array($numColumns);
         $i = 0;
-        while ($i <  $numColumns)
+        $res = array();
+        while ($data = mysql_fetch_object($result))
         {
-            $row = mysql_fetch_row($result);
-            if (count($row) >= 2)
-            {
-                $res[$i] = array('workout_date' => $row[0],
-                                 'work' => $row[1],
-                                 'result' => $row[2]);
-            }
+            $res[$i] = array('date'         => $data->workout_date,
+                             'work'         => $data->work,
+                             'result'       => $data->result
+            );
+            //echo '<br>workout_date=' . $data->workout_date;
+            //echo '<br>work='         . $data->work;
+            //echo '<br>result='       . $data->result;
             $i++;
         }
-        mysql_free_result($result);
         self::CloseConnection();
         return $res;
     }
@@ -326,55 +371,39 @@ class DBunit {
                                                      . ConstUnit::TABLE_USERS . " u" .
             " where u.id = " . $user_id .
             " and w.athlete_id  = u.id";
+        //echo $query;
         $result = mysql_query($query) or die('Query failed: ' . mysql_error());
         $numColumns = mysql_num_rows($result);
         $workouts = array($numColumns);
         $i = 0;
-        $workout_id = -1;
-        $date = 0;
-        $works = "";
-        $results = "";
         while ($i <  $numColumns)
         {
-            $row = mysql_fetch_row($result);
-
-            if (count($row) >= 2)
+            while ($data = mysql_fetch_object($result))
             {
-                $workout_id = $row[0];
-                $date = $row[1];
+                //echo "<br>workout_id=" . $data->id;
+                //echo "<br>workout_date=" . $data->workout_date;
+                $workout_id = $data->id;
+                //$date = $data->workout_date;
                 $workout = DBunit::getWorkout($workout_id);
-                if (count($workout) > 0)
+                for ($j = 0; $j < count($workout); $j++)
                 {
-                    for ($i = 0; $i < count($workout); $i++)
-                    {
-                        $works = $works . $workout[$i]['work'] . ' ';
-                        $results = $results . $workout[$i]['result'] . ' ';
-                    }
-
+                    //echo "<br>" . $workout[$j]['date'];
+                    //echo "<br>" . $workout[$j]['work'];
+                    //echo "<br>" . $workout[$j]['result'];
+                    $workouts[$i] = array(
+                        'id'      => $workout_id ,
+                        'date'    => $workout[$j]['date'],
+                        'work'   => $workout[$j]['work'],
+                        'result' => $workout[$j]['result']
+                    );
+                    $i++;
                 }
             }
 
-            $workouts[$i] = array('id' => $workout_id , 'date' => $date, 'works' => $works, 'results' => $results );
-            $i++;
         }
         self::CloseConnection();
         return $workouts;
-        /*
-         * это представление, должно быть на странице, а не в контроллере
-         * $res = "<" . "table id='workouts'>";
-
-        for ($i = 0; $i < count($workouts); $i++)
-        {
-            $res = $res . "<tr>"
-                            . "<td>" . $workouts[$i]['date'] . "</td>"
-                            . "<td>" . $workouts[$i]['works'] . "</td>"
-                            . "<td>" . $workouts[$i]['results'] . "</td>"
-                        . "</tr>";
-        }
-        $res = $res . "</table>";
-        return $res;//не понимаю ничего...*/
     }
-
 
     static function getProducts()
     {

@@ -7,32 +7,33 @@
     <file path="/a.php" changelist="a7771be8-6121-4e2e-9291-f37afd09334f" time="1382558490180" ignored="false" />
     <file path="/a.coffee" changelist="a7771be8-6121-4e2e-9291-f37afd09334f" time="1382558508924" ignored="false" />
     <file path="/login.phtml" changelist="a7771be8-6121-4e2e-9291-f37afd09334f" time="1384105548949" ignored="false" />
-    <file path="/app.js" changelist="a7771be8-6121-4e2e-9291-f37afd09334f" time="1384105383322" ignored="false" />
-    <file path="/sign-up.phtml" changelist="a7771be8-6121-4e2e-9291-f37afd09334f" time="1384457215689" ignored="false" />
-    <file path="/main.css" changelist="a7771be8-6121-4e2e-9291-f37afd09334f" time="1382884665509" ignored="false" />
+    <file path="/app.js" changelist="a7771be8-6121-4e2e-9291-f37afd09334f" time="1386430698352" ignored="false" />
+    <file path="/sign-up.phtml" changelist="a7771be8-6121-4e2e-9291-f37afd09334f" time="1386428940311" ignored="false" />
+    <file path="/main.css" changelist="a7771be8-6121-4e2e-9291-f37afd09334f" time="1386428145099" ignored="false" />
     <file path="/categories.phtml" changelist="a7771be8-6121-4e2e-9291-f37afd09334f" time="1382564466185" ignored="false" />
     <file path="/athlete.phtml" changelist="a7771be8-6121-4e2e-9291-f37afd09334f" time="1383134828119" ignored="false" />
     <file path="/coach.phtml" changelist="a7771be8-6121-4e2e-9291-f37afd09334f" time="1383134703128" ignored="false" />
-    <file path="/information-card.phtml" changelist="a7771be8-6121-4e2e-9291-f37afd09334f" time="1383135383464" ignored="false" />
+    <file path="/information-card.phtml" changelist="a7771be8-6121-4e2e-9291-f37afd09334f" time="1386424365663" ignored="false" />
     <file path="/System_Const.php" changelist="a7771be8-6121-4e2e-9291-f37afd09334f" time="1383069436299" ignored="false" />
-    <file path="/System_DB.php" changelist="a7771be8-6121-4e2e-9291-f37afd09334f" time="1384458567745" ignored="false" />
+    <file path="/System_DB.php" changelist="a7771be8-6121-4e2e-9291-f37afd09334f" time="1386426526299" ignored="false" />
     <file path="/workout.phtml" changelist="a7771be8-6121-4e2e-9291-f37afd09334f" time="1382887428858" ignored="false" />
     <file path="/statistic.phtml" changelist="a7771be8-6121-4e2e-9291-f37afd09334f" time="1382883102252" ignored="false" />
     <file path="/workouts.phtml" changelist="a7771be8-6121-4e2e-9291-f37afd09334f" time="1383133223369" ignored="false" />
-    <file path="/main.phtml" changelist="a7771be8-6121-4e2e-9291-f37afd09334f" time="1384456545546" ignored="false" />
+    <file path="/main.phtml" changelist="a7771be8-6121-4e2e-9291-f37afd09334f" time="1386421604816" ignored="false" />
     <file path="/sign-up.php" changelist="a7771be8-6121-4e2e-9291-f37afd09334f" time="1383070245947" ignored="false" />
     <file path="/login.php" changelist="a7771be8-6121-4e2e-9291-f37afd09334f" time="1383071252361" ignored="false" />
     <file path="/main.php" changelist="a7771be8-6121-4e2e-9291-f37afd09334f" time="1383069233566" ignored="false" />
     <file path="/index.php" changelist="a7771be8-6121-4e2e-9291-f37afd09334f" time="1383070524376" ignored="false" />
-    <file path="/MainController.php" changelist="a7771be8-6121-4e2e-9291-f37afd09334f" time="1384106695547" ignored="false" />
+    <file path="/MainController.php" changelist="a7771be8-6121-4e2e-9291-f37afd09334f" time="1386428468804" ignored="false" />
     <file path="/some.phtml" changelist="a7771be8-6121-4e2e-9291-f37afd09334f" time="1383127617127" ignored="false" />
     <file path="/layout.phtml" changelist="a7771be8-6121-4e2e-9291-f37afd09334f" time="1383125039028" ignored="false" />
     <file path="/System_Controller.php" changelist="a7771be8-6121-4e2e-9291-f37afd09334f" time="1383125900604" ignored="false" />
     <file path="/System_Layout.php" changelist="a7771be8-6121-4e2e-9291-f37afd09334f" time="1383126042090" ignored="false" />
     <file path="/System_View.php" changelist="a7771be8-6121-4e2e-9291-f37afd09334f" time="1383125267049" ignored="false" />
     <file path="/signup.phtml" changelist="a7771be8-6121-4e2e-9291-f37afd09334f" time="1384106072709" ignored="false" />
-    <file path="/register.phtml" changelist="a7771be8-6121-4e2e-9291-f37afd09334f" time="1384457948201" ignored="false" />
+    <file path="/register.phtml" changelist="a7771be8-6121-4e2e-9291-f37afd09334f" time="1386422880238" ignored="false" />
     <file path="/index.phtml" changelist="a7771be8-6121-4e2e-9291-f37afd09334f" time="1384110845081" ignored="false" />
+    <file path="/set-workout.phtml" changelist="a7771be8-6121-4e2e-9291-f37afd09334f" time="1386430321562" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +56,7 @@
       <file leaf-file-name="register.phtml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/views/register.phtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="9" selection-start="55" selection-end="55" vertical-scroll-proportion="0.0">
+            <state line="20" column="0" selection-start="691" selection-end="691" vertical-scroll-proportion="-13.076923">
               <folding />
             </state>
           </provider>
@@ -64,70 +65,45 @@
       <file leaf-file-name="main.phtml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/views/main.phtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="21" selection-start="65" selection-end="65" vertical-scroll-proportion="0.0">
+            <state line="18" column="54" selection-start="598" selection-end="598" vertical-scroll-proportion="-4.576923">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.phtml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/views/index.phtml">
+      <file leaf-file-name="set-workout.phtml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/partials/set-workout.phtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="0" selection-start="138" selection-end="138" vertical-scroll-proportion="0.0">
+            <state line="22" column="84" selection-start="1082" selection-end="1100" vertical-scroll-proportion="-14.384615">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="header.phtml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/views/partials/header.phtml">
+      <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="36" column="38" selection-start="1202" selection-end="1202" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="signup.phtml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/signup.phtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="179" vertical-scroll-proportion="-0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="layout.phtml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/views/layouts/layout.phtml">
+      <file leaf-file-name="MainController.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/application/controllers/MainController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="76" selection-start="267" selection-end="335" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="admin_layout.phtml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/application/views/layouts/admin_layout.phtml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="76" selection-start="332" selection-end="332" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="login.phtml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/views/partials/login.phtml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="8" selection-start="881" selection-end="881" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="information-card.phtml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/views/partials/information-card.phtml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="49" column="0" selection-start="1418" selection-end="1418" vertical-scroll-proportion="0.4578097">
               <folding />
             </state>
           </provider>
@@ -136,7 +112,7 @@
       <file leaf-file-name="sign-up.phtml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/views/partials/sign-up.phtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="48" selection-start="70" selection-end="70" vertical-scroll-proportion="0.0">
+            <state line="108" column="0" selection-start="4648" selection-end="4648" vertical-scroll-proportion="-16.192308">
               <folding />
             </state>
           </provider>
@@ -152,22 +128,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/www/login.php" />
-        <option value="$PROJECT_DIR$/application/views/partials/workouts.phtml" />
-        <option value="$PROJECT_DIR$/application/views/partials/coach.phtml" />
-        <option value="$PROJECT_DIR$/application/views/partials/athlete.phtml" />
-        <option value="$PROJECT_DIR$/application/views/partials/information-card.phtml" />
-        <option value="$PROJECT_DIR$/www/js/app.js" />
-        <option value="$PROJECT_DIR$/application/views/signup.phtml" />
-        <option value="$PROJECT_DIR$/application/views/registrate.phtml" />
-        <option value="$PROJECT_DIR$/application/controllers/MainController.php" />
         <option value="$PROJECT_DIR$/application/views/index.phtml" />
         <option value="$PROJECT_DIR$/www/Tools/phpmyadmin/config.inc.php" />
-        <option value="$PROJECT_DIR$/application/views/main.phtml" />
         <option value="$PROJECT_DIR$/application/views/partials/login.phtml" />
-        <option value="$PROJECT_DIR$/application/views/partials/sign-up.phtml" />
         <option value="$PROJECT_DIR$/application/views/register.phtml" />
+        <option value="$PROJECT_DIR$/application/views/partials/information-card.phtml" />
         <option value="$PROJECT_DIR$/library/System/System_DB.php" />
+        <option value="$PROJECT_DIR$/application/views/partials/workouts.phtml" />
+        <option value="$PROJECT_DIR$/www/css/main.css" />
+        <option value="$PROJECT_DIR$/application/views/setWorkout.phtml" />
+        <option value="$PROJECT_DIR$/application/views/main.phtml" />
+        <option value="$PROJECT_DIR$/application/views/partials/sign-up.phtml" />
+        <option value="$PROJECT_DIR$/www/css/bootstrap.css" />
+        <option value="$PROJECT_DIR$/www/js/bootstrap.js" />
+        <option value="$PROJECT_DIR$/application/views/partials/set-workout.phtml" />
+        <option value="$PROJECT_DIR$/www/js/app.js" />
+        <option value="$PROJECT_DIR$/application/controllers/MainController.php" />
       </list>
     </option>
   </component>
@@ -207,7 +183,7 @@
     <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
-    <navigator proportions="" version="1" splitterProportion="0.5">
+    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -218,7 +194,177 @@
       <autoscrollFromSource />
       <sortByType />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="localhost" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="localhost" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="localhost" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="localhost" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="localhost" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="localhost" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="localhost" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="localhost" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="localhost" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="localhost" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="localhost" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="library" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="System" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="localhost" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="localhost" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="localhost" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="localhost" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="partials" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="localhost" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="localhost" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layouts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="localhost" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="localhost" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
@@ -230,6 +376,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\WebServers\home\localhost\application\views" />
       <recent name="C:\WebServers\home\localhost\application\views\partials" />
     </key>
   </component>
@@ -291,13 +438,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="0" width="1302" height="768" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32854864" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1983871" sideWeight="0.6704" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2016129" sideWeight="0.6704" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -387,104 +534,120 @@
     </PATH>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/application/views/index.phtml">
+    <entry file="file://$PROJECT_DIR$/application/views/partials/workout.phtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="0" selection-start="138" selection-end="138" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/Tools/phpmyadmin/config.inc.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="570" column="3" selection-start="31089" selection-end="31089" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/Tools/phpmyadmin/config.inc.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="89" column="41" selection-start="2590" selection-end="2590" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/Tools/phpmyadmin/config.default.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/Tools/phpmyadmin/config.inc.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="89" column="44" selection-start="3767" selection-end="3767" vertical-scroll-proportion="0.57857144" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/main.phtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="21" selection-start="65" selection-end="65" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/partials/information-card.phtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/register.phtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="9" selection-start="55" selection-end="55" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/library/System/System_DB.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="257" column="33" selection-start="9860" selection-end="9860" vertical-scroll-proportion="-0.65384614" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/partials/sign-up.phtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="48" selection-start="70" selection-end="70" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/partials/login.phtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="8" selection-start="881" selection-end="881" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/index.phtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="0" selection-start="138" selection-end="138" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/partials/header.phtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="3" column="54" selection-start="92" selection-end="115" vertical-scroll-proportion="-1.9615384">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/views/layouts/layout.phtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="76" selection-start="267" selection-end="335" vertical-scroll-proportion="0.0">
+        <state line="5" column="76" selection-start="267" selection-end="335" vertical-scroll-proportion="-3.2692308">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/layouts/admin_layout.phtml">
+    <entry file="file://$PROJECT_DIR$/library/System/System_Layout.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="76" selection-start="332" selection-end="332" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/library/System/System_View.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/main.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="54" selection-start="598" selection-end="598" vertical-scroll-proportion="-4.576923">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/register.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="0" selection-start="691" selection-end="691" vertical-scroll-proportion="-13.076923">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/partials/sign-up.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="108" column="0" selection-start="4648" selection-end="4648" vertical-scroll-proportion="-16.192308">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Documents/Университет/5 курс/Банковские ИС/OperationDepartment/WebContent/css/bootstrap.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="11" selection-start="0" selection-end="126432" vertical-scroll-proportion="0.4025501">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Documents/Университет/5 курс/Банковские ИС/OperationDepartment/WebContent/js/bootstrap.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="3" selection-start="0" selection-end="58327" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/bootstrap.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2002" column="0" selection-start="63805" selection-end="63805" vertical-scroll-proportion="0.9380692">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/css/bootstrap.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7080" column="14" selection-start="132972" selection-end="132972" vertical-scroll-proportion="0.39649123">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Documents/Университет/5 курс/Банковские ИС/OperationDepartment/WebContent/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-7.5754385">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/signup.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="179" vertical-scroll-proportion="-0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/partials/set-workout.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="84" selection-start="1082" selection-end="1100" vertical-scroll-proportion="-14.384615">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="38" selection-start="1202" selection-end="1202" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/MainController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="49" column="0" selection-start="1418" selection-end="1418" vertical-scroll-proportion="0.4578097">
           <folding />
         </state>
       </provider>

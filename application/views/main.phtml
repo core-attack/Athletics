@@ -1,25 +1,28 @@
 <?php
 echo $this->partial('header', $this);
-echo $_POST["login"];
-echo "1";
-
+//echo "логин=" . $_POST["login"] . "пароль=" . $_POST["password"];
 if (DBunit::checkLoginPassword($_POST["login"], $_POST["password"]))
 {
-    echo "2";
-    switch(DBunit::getId($_POST["login"], $_POST["password"]))
+    //забираем себе его id
+    $id = DBunit::getId($_POST["login"], $_POST["password"]);
+    switch(DBunit::getRoleById($id))
     {
         //администратор
-        case 1:{}
+        case 1:{
+            echo "Зашли как администратор";
+        }
             break;
         //спортсмен
         case 2:{
+            echo "Зашли как спортсмен";
             //форма записи тренировок
+            echo $this->partial('set-workout', $this);
             //личные данные
             echo $this->partial('information-card', $this);
             //последние тренировки
             echo $this->partial('workouts', $this);
             //статистика
-            echo $this->partial('statistic', $this);
+            //echo $this->partial('statistic', $this);
 
             //предстоящие соревнования
             //план тренировок
@@ -27,6 +30,7 @@ if (DBunit::checkLoginPassword($_POST["login"], $_POST["password"]))
             break;
         //тренер
         case 3:{
+            echo "Зашли как тренер";
             //форма записи планов тренировок
             //последние планы тренировок
             //личные данные
@@ -45,10 +49,10 @@ if (DBunit::checkLoginPassword($_POST["login"], $_POST["password"]))
     //echo $this->partial('coach', $this);
 }
 else{
-    echo "3";
-    header("Такого пользователя в системе нет.");
+    echo "Такого пользователя в системе нет";
+    //header("HTTP/1.0 404 Такого пользователя в системе нет.");
 }
-
+/*
 //если пользователь не менял пароль
 if ($_POST["newPassword"] == "")
 {
@@ -70,6 +74,6 @@ else if (DBunit::getPassword($_POST["login"]) != $_POST["newPassword"])
 }
 //<div class="body">
 //</div>
-
+*/
 
 echo $this->partial('footer', $this); ?>

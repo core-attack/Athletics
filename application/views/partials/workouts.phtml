@@ -1,20 +1,32 @@
 <div id="workouts">
     <?php
-    $workouts = DBunit::getAllWorkouts(2);
-    $res = "&lttable id='workouts'&gt";
+    $id = DBunit::getId($_POST["login"], $_POST["password"]);
+    $workouts = DBunit::getAllWorkouts($id);
+    /*$res = "&lttable id='workouts'&gt";
     for ($i = 0; $i < count($workouts); $i++)
     {
-        //print_r($workouts);
-        //die();
-        $res = $res . "&lttr>"
-            . "&lttd&gt" . $workouts[4]['date'] . "&lt/td&gt"
-            . "&lttd&gt" . $workouts[4]['works'] . "&lt/td&gt"
-            . "&lttd&gt" . $workouts[4]['results'] . "&lt/td&gt"
+        $res = $res . "&lttr&gt"
+            . "&lttd&gt" . $workouts[$i]['id'] . "&lt/td&gt"
+            . "&lttd&gt" . $workouts[$i]['date'] . "&lt/td&gt"
+            . "&lttd&gt" . $workouts[$i]['work'] . "&lt/td&gt"
+            . "&lttd&gt" . $workouts[$i]['result'] . "&lt/td&gt"
             . "&lt/tr&gt";
+    }*/
+    $res = "<table" . " id='workouts'" . ">";
+    for ($i = 0; $i < count($workouts); $i++)
+    {
+        $res = $res . "<tr>"
+            . "<td>" . $workouts[$i]['id']     . "</td>"
+            . "<td>" . $workouts[$i]['date']   . "</td>"
+            . "<td>" . $workouts[$i]['work']   . "</td>"
+            . "<td>" . $workouts[$i]['result'] . "</td>"
+            . "</tr>";
     }
 
-    $table = $res . "&lt/table&gt";
-    ?>
+    $table = $res . "</table>";
 
-    <?php echo $table?>
+
+    echo  $table;
+
+    ?>
 </div>
