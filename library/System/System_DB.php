@@ -218,10 +218,124 @@ class DBunit {
                 "login"    => $data->login
             );
         }
+    }
+
+    //предстоящие соревнования
+    static function getNextEvents()
+    {
+        $query = "SELECT id, name, event_date, country, city, address, close_date
+				  FROM " . ConstUnit::TABLE_SPORTING_EVENTS . " where event_date > sysdate()";
+        $result = mysql_query($query) or die('Query failed: ' . mysql_error());
+        $res = array();
+        $i = 0;
+        while ($data = mysql_fetch_object($result))
+        {
+            $res[$i] = array(
+                "id"     => $data->id,
+                "name"    => $data->name,
+                "event_date"    => $data->event_date,
+                "country"    => $data->country,
+                "city" => $data->city,
+                "address"      => $data->address,
+                "close_date" => $data->close_date
+            );
+            $i++;
+        }
+        return $res;
+    }
 
 
 
+    //план тренировок на неделю
+    //(как-нибудь по другому надо запрашивать, потому что тренер публикует план, а спортсмены его просматривают
+    //либо что-то вроде актуальной недели хранить, либо хз)
+    //а вообще лучше по дате обращаться
+    //static function getWeekPlan($id)
+    static function getWeekPlan()
+    {
+        $query = "select wwp.week_begin_date, wwp.week_end_date, wwp.comments, wp.week_day, r.work, r.result " .
+        "from "
+        . ConstUnit::TABLE_RESULTS . " r, "
+        . ConstUnit::TABLE_WORKOUT_PLANS . " wp, "
+        . ConstUnit::TABLE_WORKOUT_WEEK_PLANS . " wwp " .
+        "where r.workout_plans_id = wp.id
+        and wwp.id = wp.workout_week_plan_id
+        and wwp.week_end_date >= curdate()
+        and wwp.week_begin_date < curdate()";
+        $result = mysql_query($query) or die('Query failed: ' . mysql_error());
+        $res = array();
+        $i = 0;
+        while ($data = mysql_fetch_object($result))
+        {
+            $res[$i] = array(
+                "week_begin_date" => $data->week_begin_date,
+                "week_end_date"   => $data->week_end_date,
+                "comments"        => $data->comments,
+                "week_day"        => $data->week_day,
+                "work"            => $data->work,
+                "result"          => $data->result
+            );
+            $i++;
+        }
+        return $res;
+    }
 
+    static function getWeekPlanWithId($workout_week_plan_id)
+    {
+        $query = "select wwp.week_begin_date, wwp.week_end_date, wwp.comments, wp.week_day, r.work, r.result " .
+            "from "
+            . ConstUnit::TABLE_RESULTS . " r, "
+            . ConstUnit::TABLE_WORKOUT_PLANS . " wp, "
+            . ConstUnit::TABLE_WORKOUT_WEEK_PLANS . " wwp " .
+            "where r.workout_plans_id = wp.id
+            and wwp.id = wp.workout_week_plan_id
+            and wwp.id = " . $workout_week_plan_id ;
+        $result = mysql_query($query) or die('Query failed: ' . mysql_error());
+        $res = array();
+        $i = 0;
+        while ($data = mysql_fetch_object($result))
+        {
+            $res[$i] = array(
+                "week_begin_date" => $data->week_begin_date,
+                "week_end_date"   => $data->week_end_date,
+                "comments"        => $data->comments,
+                "week_day"        => $data->week_day,
+                "work"            => $data->work,
+                "result"          => $data->result
+            );
+            $i++;
+        }
+        return $res;
+    }
+
+    //Возвращает все планы тренировок для конкретного тренера
+    static function getWeekPlans($coach_id)
+    {
+        $query = "select wwp.id, wwp.week_begin_date, wwp.week_end_date, wwp.comments, wp.week_day, r.work, r.result " .
+            "from "
+            . ConstUnit::TABLE_RESULTS . " r, "
+            . ConstUnit::TABLE_WORKOUT_PLANS . " wp, "
+            . ConstUnit::TABLE_WORKOUT_WEEK_PLANS . " wwp " .
+            "where r.workout_plans_id = wp.id
+            and wwp.id = wp.workout_week_plan_id
+            and wwp.coach_id = " . $coach_id;
+        $result = mysql_query($query) or die('Query failed: ' . mysql_error());
+        $res = array();
+        $i = 0;
+        while ($data = mysql_fetch_object($result))
+        {
+            $res[$i] = array(
+                "id" => $data->id,
+                "week_begin_date" => $data->week_begin_date,
+                "week_end_date"   => $data->week_end_date,
+                "comments"        => $data->comments,
+                "week_day"        => $data->week_day,
+                "work"            => $data->work,
+                "result"          => $data->result
+            );
+            $i++;
+        }
+        return $res;
     }
 
     static function getPasswordByLogin($login)

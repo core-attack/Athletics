@@ -1,0 +1,32 @@
+<div id="workout-plans">
+    <?php
+    $coach_id = DBunit::getId($_POST["login"], $_POST["password"]);
+    $workout_plans = DBunit::getWeekPlans($coach_id);
+    $result = "<div" . " id='weeks'" . ">";
+    for ($j = 0; $j < count($workout_plans); $j++)
+    {
+        //$workout_plan = DBunit::getWeekPlanWithId($workout_plans[$j]['id']);
+        $res = "<div" . " id='week'" . ">";
+
+        for ($i = 0; $i < count($workout_plans); $i++)
+        {
+            //if ($i == 0)
+            {
+                $res = $res . "<span id='week-begin-date'>" . $workout_plans[$i]['week_begin_date'] . "</span>"
+                    . "<span id='week-end-date'>" . $workout_plans[$i]['week_end_date'] . "</span>"
+                    . "<span id='week-comments'>" . $workout_plans[$i]['comments'] . "</span>";
+            }
+            $res = $res . "<day>"
+                . "<span id='name'>" . $workout_plans[$i]['week_day']     . "</a>"
+                . "<span>" . $workout_plans[$i]['work']         . "</span>"
+                . "<span>" . $workout_plans[$i]['result']   . "</span>"
+                . "</day>";
+        }
+        $res = $res . "</div>";
+        $result = $result . $res;
+    }
+    $result = $result . "</div>";
+    echo  $res;
+
+    ?>
+</div>

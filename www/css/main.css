@@ -79,3 +79,12 @@ body {
 td{
     padding: 2px 5px;
 }
+
+span{
+    padding: 5px;
+}
+
+#day{
+    display: list-item;
+}
+

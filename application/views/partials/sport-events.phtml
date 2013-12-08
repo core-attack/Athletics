@@ -1,0 +1,25 @@
+<div id="sport-events">
+    <?php
+    //$id = DBunit::getId($_POST["login"], $_POST["password"]);
+    $events = DBunit::getNextEvents();
+    $res = "<table" . " id='sporting-events'" . ">";
+    for ($i = 0; $i < count($events); $i++)
+    {
+        $res = $res . "<tr>"
+            . "<td>" . $events[$i]['id']     . "</td>"
+            . "<td>" . $events[$i]['name']   . "</td>"
+            . "<td>" . $events[$i]['event_date']   . "</td>"
+            . "<td>" . $events[$i]['country'] . "</td>"
+            . "<td>" . $events[$i]['city']     . "</td>"
+            . "<td>" . $events[$i]['address']   . "</td>"
+            . "<td>" . $events[$i]['close_date']   . "</td>"
+            . "</tr>";
+    }
+
+    $table = $res . "</table>";
+
+
+    echo  $table;
+
+    ?>
+</div>

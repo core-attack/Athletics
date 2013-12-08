@@ -11,42 +11,38 @@ if (DBunit::checkLoginPassword($_POST["login"], $_POST["password"]))
         case 1:{
             echo "Зашли как администратор";
         }
-            break;
+        break;
         //спортсмен
         case 2:{
             echo "Зашли как спортсмен";
-            //форма записи тренировок
-            echo $this->partial('set-workout', $this);
             //личные данные
             echo $this->partial('information-card', $this);
+            //форма записи тренировок
+            echo $this->partial('set-workout', $this);
             //последние тренировки
             echo $this->partial('workouts', $this);
             //статистика
             //echo $this->partial('statistic', $this);
-
             //предстоящие соревнования
+            echo $this->partial('sport-events', $this);
             //план тренировок
+            echo $this->partial('workout-plan', $this);
         }
-            break;
+        break;
         //тренер
         case 3:{
             echo "Зашли как тренер";
-            //форма записи планов тренировок
-            //последние планы тренировок
             //личные данные
             echo $this->partial('information-card', $this);
+            //форма записи планов тренировок
+            echo $this->partial('set-workout-plan', $this);
+            //последние планы тренировок
+            echo $this->partial('workout-plans', $this);
             //предстоящие соревнования
+            echo $this->partial('sport-events', $this);
         }
-            break;
+        break;
     }
-    //echo $this->partial('workouts', $this);
-
-    //echo $this->partial('statistic', $this);
-
-    //тут будет выбор между ролями
-    //echo $this->partial('athlete', $this);
-
-    //echo $this->partial('coach', $this);
 }
 else{
     echo "Такого пользователя в системе нет";
