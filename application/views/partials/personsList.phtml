@@ -1,0 +1,57 @@
+
+<div class="tabs">
+        <div>
+            <div class="sheet_head">
+                Логин
+            </div>
+            <div class="sheet_head">
+                Пароль
+            </div>
+            <div class="sheet_head">
+                Имя
+            </div>
+            <div class="sheet_head">
+                Фамилия
+            </div>
+            <div class="sheet_head">
+                Отчество
+            </div>
+            <div class="sheet_head">
+                Категория
+            </div>
+            <div class="sheet_head">
+                Дата рождения
+            </div>
+            <div class="sheet_head">
+                Паспорт
+            </div>
+        </div>
+    <?php foreach($this->items as $item): ?>
+        <div id="<?=$item['id']?>" class="row">
+            <div class="sheet">
+                <?=$item['login']?>
+            </div>
+            <div class="sheet">
+                <?=$item['password']?>
+            </div>
+            <div class="sheet">
+                <?=$item['name']?>
+            </div>
+            <div class="sheet">
+                <?=$item['sname']?>
+            </div>
+            <div class="sheet">
+                <?=$item['lname']?>
+            </div>
+            <div class="sheet">
+                <?=$item['category']?>
+            </div>
+            <div class="sheet">
+                <?=$item['borndate']?>
+            </div>
+            <div class="sheet">
+                <?=$item['passport']?>
+            </div>
+        </div>
+    <?php endforeach; ?>
+</div>

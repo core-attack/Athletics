@@ -17,6 +17,7 @@ class System_Controller {
 	function __construct($root = '')
 	{
 		$this->root = $root;
+                session_start();
 		$this->loadConfig();
 		$this->initView();
 		$this->initLayout();		

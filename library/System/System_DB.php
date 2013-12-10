@@ -6,6 +6,7 @@ require_once('System/System_Const.php');
  * Модуль для работы с БД
  * Требует PHP не ниже 5.3.0
  */
+
 class DBunit {
 
     private static $_dbconn = NULL;
@@ -19,11 +20,8 @@ class DBunit {
         $database = 'athletics';
         $user = 'core';
         $password = 'pass';
-        $link = mysql_connect($host, $user, $password) or die('Not connect with MySQL!' . mysql_error());
-        self::$_dbconn = mysql_select_db('athletics', $link) or die('Not connect to database' . mysql_error());
-        //$link = mysql_connect('localhost', 'vasya', '111') or die("not connect!!!");
-        //self::$_dbconn = mysql_select_db('athletics', $link);
-        //var_dump(self::$_dbconn);
+        self::$_dbconn = mysql_connect($host, $user, $password) or die('Not connect with MySQL!' . mysql_error());
+        mysql_select_db('athletics', self::$_dbconn) or die('Not connect to database' . mysql_error());
         mysql_query("SET NAMES utf8");
         mysql_query("SET COLLATION_CONNECTION=utf8_bin");
 
@@ -32,7 +30,6 @@ class DBunit {
     // вылогин от БД
     static public function CloseConnection() {
 
-        //var_dump(self::$_dbconn);
         mysql_close(self::$_dbconn) ; // вылогиниться от БД //or die('Can not close connection' . mysql_error())
         self::$_dbconn = NULL;
     }
@@ -101,7 +98,7 @@ class DBunit {
         	}
         }
         self::CloseConnection();
-    	return 'no name admin';
+    	return NULL;
 	}
 
     // проверить логин/пароль админа
@@ -193,8 +190,9 @@ class DBunit {
     //роль пользователя
     static function getRoleById($user_id)
     {
-        $query = "SELECT role_id
-				  FROM " . ConstUnit::TABLE_USERS . " where id = " . $user_id . "";
+        self::ConnectToDB();
+        $user_id = (int)$user_id;
+        $query = "SELECT role_id FROM ".ConstUnit::TABLE_USERS." where id = ".$user_id;
         $result = mysql_query($query) or die('Query failed: ' . mysql_error());
         return mysql_fetch_object($result)->role_id;
     }
@@ -349,7 +347,7 @@ class DBunit {
     static function requestToDB($query)
     {
         $result = mysql_query($query) or die('Query failed: ' . mysql_error());
-        mysql_free_result($result);
+        //mysql_free_result($result);
         return true;
     }
 
@@ -533,23 +531,28 @@ class DBunit {
         return $workouts;
     }
 
-    static function getProducts()
+    static function getProducts($role_id)
     {
+        $role_id = (int)$role_id;
         self::ConnectToDB();
-        $query = "SELECT * FROM " . ConstUnit::TABLE_NAME_PRODUCTS;
+        $query = "SELECT ".ConstUnit::TABLE_NAME_PRODUCTS.".*, categories.name as category FROM ".ConstUnit::TABLE_NAME_PRODUCTS." 
+            JOIN categories ON (".ConstUnit::TABLE_NAME_PRODUCTS.".category_id = categories.id) WHERE role_id = ".$role_id;
         $result = mysql_query($query) or die('Query failed: ' . mysql_error());
         $res = array();
-        /*while ($data = mysql_fetch_object($result))
+        while($item = mysql_fetch_array($result))
         {
-            $res[] = array('name' => $data->name,
-            			   'descr' => $data->descr,
-            			   'description' => $data->description,
-                           'cat_id' => $data->cat_id,
-                           'genre_id' => $data->genre_id,
-                           'count'  => $data->count,
-                           'price'  => $data->price);
-        }*/
-        mysql_free_result($result);
+            $res[] = array(
+                "id" => $item["id"],
+                "login" => $item["login"],
+                "password" => $item["password"],
+                "name" => $item["name"],
+                "sname" => $item["sname"],
+                "lname" => $item["lname"],
+                "category" => $item["category"],
+                "borndate" => $item["borndate"],
+                "passport" => $item["passport"]
+            );
+        }
         self::CloseConnection();
         return $res;
     }
@@ -603,8 +606,59 @@ class DBunit {
         $result = mysql_query($query) or die('Query failed: ' . mysql_error());
         self::CloseConnection();
     }
+    
+    static function createUserSession($user)
+    {
+        $_SESSION['hash'] = md5($user->password);
+        $_SESSION['id'] = md5($user->id);
+    }
+    
+    static function checkUserSession()
+    {
+        self::ConnectToDB();
+        $id =  mysql_real_escape_string($_SESSION['id']);
+        $hash = mysql_real_escape_string($_SESSION['hash']);
+        $sql = 'SELECT * FROM users WHERE md5(id) = \''.$id.'\' AND md5(password) = \''.$hash.'\'';
+        $result = mysql_query($sql);
+        if(mysql_num_rows($result) == 1)
+            return mysql_fetch_object ($result);
+        else
+            return null;
+    }
 
-    static function getuser(){}
+    static function getUser($login, $password)
+    {
+        self::ConnectToDB();
+        $login = mysql_real_escape_string($login);
+        $password = mysql_real_escape_string($password);
+        $sql = 'SELECT * FROM users WHERE login = \''.$login.'\' AND password = \''.$password.'\'';
+        $result = mysql_query($sql);
+        if(mysql_num_rows($result) == 1)
+            return mysql_fetch_object ($result);
+        else
+            return null;
+    }
+    
+    static function getSportEvents()
+    {
+        self::ConnectToDB();
+        $sql = 'SELECT * FROM sporting_events';
+        $result = mysql_query($sql);
+        $res = array();
+        while($item = mysql_fetch_array($result))
+        {
+            $res[] = array(
+                "id" => $item["id"],
+                "name" => $item["name"],
+                "event_date" => $item["event_date"],
+                "country" => $item["country"],
+                "city" => $item["city"],
+                "address" => $item["address"],
+                "close_date" => $item["close_date"]
+            );
+        }
+        return $res;
+    }
 
 
 

@@ -1,0 +1,22 @@
+<?php echo $this->partial('header', $this); ?>
+
+<div id="tabs">
+  <ul>
+    <li><a href="#tabs-1">Спортсмены</a></li>
+    <li><a href="#tabs-2">Тренера</a></li>
+    <li><a href="#tabs-3">Мероприятия</a></li>
+  </ul>    
+    <div id="tabs-1" class="tab_block">
+        <?php echo $this->partial('addingPersonForm', array('role' => BusinessLogic::ROLE_SPORTSMEN)); ?>
+        <?php echo $this->partial('personsList', array('items' => $this->sportsmens)); ?>
+    </div>
+    <div id="tabs-2" class="tab_block">
+        <?php echo $this->partial('addingPersonForm', array('role' => BusinessLogic::ROLE_TRENER)); ?>
+        <?php echo $this->partial('personsList', array('items' => $this->treners)); ?>
+    </div>
+    <div id="tabs-3" class="tab_block">
+        <?php echo $this->partial('eventsList', $this); ?>
+    </div>
+</div>
+
+<?php echo $this->partial('footer', $this); ?>
