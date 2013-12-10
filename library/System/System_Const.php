@@ -4,6 +4,7 @@
 class ConstUnit
 {
     const TABLE_NAME_PRODUCTS = "users";
+    const TABLE_NAME_ADMIN = "admin_users";
     const TABLE_ATHLETES_COACHES = "athletes_coaches";
     const TABLE_CATEGORIES = "categories";
     const TABLE_CLAIMS = "claims";

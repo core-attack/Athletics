@@ -87,4 +87,17 @@ span{
 #day{
     display: list-item;
 }
+div.sheet{
+    display: inline-block;
+    width: 150px;
+}
+div.sheet_head{
+    display: inline-block;
+    width: 150px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.clear{
+    clear: both;
+}
 

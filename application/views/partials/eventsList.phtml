@@ -1,0 +1,45 @@
+<div class="tabs">
+        <div id="<?=$item['id']?>">
+            <div class="sheet_head" style="width: 200px;">
+                Название
+            </div>
+            <div class="sheet_head">
+                Дата открытия
+            </div>
+            <div class="sheet_head">
+                Страна
+            </div>
+            <div class="sheet_head">
+                Город
+            </div>
+            <div class="sheet_head">
+                Место проведения
+            </div>
+            <div class="sheet_head">
+                Дата закрытия
+            </div>
+        </div>
+    
+    <?php foreach($this->events as $item): ?>
+        <div id="<?=$item['id']?>" class="row">
+            <div class="sheet"  style="width: 200px;">
+                <?=$item['name']?>
+            </div>
+            <div class="sheet">
+                <?=$item['event_date']?>
+            </div>
+            <div class="sheet">
+                <?=$item['country']?>
+            </div>
+            <div class="sheet">
+                <?=$item['city']?>
+            </div>
+            <div class="sheet">
+                <?=$item['address']?>
+            </div>
+            <div class="sheet">
+                <?=$item['close_date']?>
+            </div>
+        </div>
+    <?php endforeach; ?>
+</div>

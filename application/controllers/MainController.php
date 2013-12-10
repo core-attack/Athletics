@@ -1,23 +1,22 @@
 <?php
-
 require_once('System/System_Controller.php');
 require_once('System/System_Const.php');
 require_once('System/System_DB.php');
+require_once('Logic/BusinessLogic.php');
 
 class Main extends System_Controller {
 	
     const CASH_LIVE_TIME = 1; // но пока будет одна секунда   //3600; // время жизни кеша (1 час)
-
-    const TABLE_NAME_ADMIN = "admin_users";
+    private $BusinessLogic = null;
 
     function preDispatch() {
         $this->view->_CASH_LIVE_TIME = self::CASH_LIVE_TIME; // установить время жизни кеша
         $this->view->url = md5('http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
+        $this->BusinessLogic = new BusinessLogic($this->layout, $this->view);
     }
 
     function indexAction() {
         $layout = 'layout';
-        // die('layout=' . $layout);
         $this->layout->setLayout($layout);
         $this->view->test = "test";
         $products = array();
@@ -35,10 +34,22 @@ class Main extends System_Controller {
     }
 
     function mainAction() {
-        $layout = 'layout';
-        $this->layout->setLayout($layout);
-        $this->layout->setAction('main');
+        $user = DBunit::checkUserSession();
+        $this->BusinessLogic->chooseInterface($user);
         return $this->render();
+    }
+    
+    function ajaxAction()
+    {
+        $this->BusinessLogic->handleAjax();
+    }
+    
+    function authAction()
+    {
+        if($this->BusinessLogic->authUser())
+            $this->mainAction ();
+        else
+            header('/');
     }
 
     function registerAction() {
@@ -53,26 +64,6 @@ class Main extends System_Controller {
         $this->layout->setLayout($layout);
         $this->layout->setAction('some');
         return $this->render();
-    }
-
-    // страница с админской частью
-    function adminAction()
-    {
-
-    	$layout = 'admin_layout';
-    	$this->layout->setLayout($layout);
-
-        session_start();//создаёт сессию (или продолжает текущую на основе session id, переданного через GET-переменную или куку).
-        $show_login = true;
-        $val = $_SESSION['val'];
-
-        if ($val != '')
-        {
-        	$show_login = false;
-        	$this->view->admin_name = DBunit::getAdminName(self::TABLE_NAME_ADMIN, $val);
-        }
-        $this->view->show_login = $show_login;
-    	return $this->render();
     }
 
     function checkloginAction()

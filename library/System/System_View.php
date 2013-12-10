@@ -14,7 +14,7 @@ class System_View
 	function renderScript($path = 'index.phtml')
 	{
 		ob_start();
-		include_once($path);
+		include($path);
 		$content = ob_get_contents();
 		ob_end_clean();
 		
