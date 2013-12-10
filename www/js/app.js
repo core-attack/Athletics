@@ -11,6 +11,31 @@ function setWorkout()
     alert("типа записали");
 
     $("#button-set-workout").parent().append(success);
+
+    var divs = document.getElementsByClassName("workoutInput");
+    for(var i = 0; i < divs.length; i++){
+        var div = divs[i];
+        var link = "http://localhost/?action=main/";// + div.getAttribute('data-type') + '/' + div.getAttribute('data-id') + "-" + div.getAttribute('data-style') + "?layout=false";
+        var xmlhttp = getXmlHttp();
+        xmlhttp.open('GET', link, true);
+        xmlhttp.targetDiv = div;
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4) {
+                if(this.status == 200) {
+                    this.targetDiv.innerHTML = this.responseText;
+                }
+                else{
+                    handleError(xmlhttp.statusText);
+                }
+            }
+        };
+        xmlhttp.send(null);
+    }
+}
+
+function addWorkoutPlanDay(){
+    var div = $().clone();
+    $("set-workout-plan").appendTo($("#day")).slideDown();
 }
 
 function getXmlHttp(){
@@ -117,4 +142,58 @@ function girlChecked(){
         $("#checkboxBoy").attr('checked', true);
     }
 
+}
+
+
+//обработчик ошибки
+function handleError(mes){
+    alert("Произошла ошибка: " +mes);
+}
+
+//возвращает объект HMLHTTP
+function getXmlHttp(){
+    var xmlhttp;
+    try {
+        xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+    } catch (e) {
+        try {
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        } catch (E) {
+            xmlhttp = false;
+        }
+    }
+    if (!xmlhttp && typeof XMLHttpRequest!='undefined') {
+        xmlhttp = new XMLHttpRequest();
+    }
+    return xmlhttp;
+}
+
+function CreateRequest()
+{
+    var Request = false;
+    if (window.XMLHttpRequest)
+    {
+        //Gecko-совместимые браузеры, Safari, Konqueror
+        Request = new XMLHttpRequest();
+        //alert('window.XMLHttpRequest');
+    }
+    else if (window.ActiveXObject)
+    {
+        //Internet explorer
+        try
+        {
+            Request = new ActiveXObject("Microsoft.XMLHTTP");
+            alert('Microsoft.XMLHTTP');
+        }
+        catch (CatchException)
+        {
+            Request = new ActiveXObject("Msxml2.XMLHTTP");
+            alert('Msxml2.XMLHTTP');
+        }
+    }
+    if (!Request)
+    {
+        alert("Невозможно создать XMLHttpRequest");
+    }
+    return Request;
 }

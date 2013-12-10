@@ -478,6 +478,20 @@ class DBunit {
         return $res;
     }
 
+    static function setWorkout($athlete_id, $coach_id)
+    {
+        self::ConnectToDB();
+        //$query = "insert into " . ConstUnit::TABLE_WORKOUTS
+        //w_date
+        //athlete_id
+        //coach_id
+        //work
+        //result
+        //workout_id
+        //workout_plan_id
+        //discipline_id
+    }
+
     static function getAllWorkouts($user_id)
     {
         self::ConnectToDB();
