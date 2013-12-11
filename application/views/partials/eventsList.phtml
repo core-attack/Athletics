@@ -1,5 +1,8 @@
 <div class="tabs">
         <div id="<?=$item['id']?>">
+            <div class="sheet_head" style="width: 50px;">
+                &nbsp;
+            </div>
             <div class="sheet_head" style="width: 200px;">
                 Название
             </div>
@@ -21,25 +24,14 @@
         </div>
     
     <?php foreach($this->events as $item): ?>
-        <div id="<?=$item['id']?>" class="row">
-            <div class="sheet"  style="width: 200px;">
-                <?=$item['name']?>
-            </div>
-            <div class="sheet">
-                <?=$item['event_date']?>
-            </div>
-            <div class="sheet">
-                <?=$item['country']?>
-            </div>
-            <div class="sheet">
-                <?=$item['city']?>
-            </div>
-            <div class="sheet">
-                <?=$item['address']?>
-            </div>
-            <div class="sheet">
-                <?=$item['close_date']?>
-            </div>
+        <div id="<?=$item['id']?>" class="row" rel="event">
+            <div class="sheet_edit" style="width: 50px;"><a class="edit_row">[ред]</a><a class="save_row" rel="<?=$item['role_id']?>" style="display: none;">[сох]</a></div>
+            <div class="sheet" rel="name" style="width: 200px;"><?=$item['name']?></div>
+            <div class="sheet" rel="event_date"><?=implode('-', array_reverse(explode('-', $item['event_date'])))?></div>
+            <div class="sheet" rel="country"><?=$item['country']?></div>
+            <div class="sheet" rel="city"><?=$item['city']?></div>
+            <div class="sheet" rel="address"><?=$item['address']?></div>
+            <div class="sheet" rel="close_date"><?=implode('-', array_reverse(explode('-', $item['close_date'])))?></div>
         </div>
     <?php endforeach; ?>
 </div>

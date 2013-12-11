@@ -57,19 +57,18 @@ class BusinessLogic
     
     public function handleAjax()
     {
-        $this->checkFields($_POST);
-        if(!empty($this->errorAjax))
-        {
-            echo json_encode(array('status' => 'error', 'message' => $this->errorAjax));
-            exit;
-        }
         switch($_POST["type"])
         {
             case self::AJAX_PERSON_ACTION:
-                $id = (int)$_POST["type"];
+                $this->checkPersonFields($_POST);
+                if(!empty($this->errorAjax)){
+                    echo json_encode(array('status' => 'error', 'message' => $this->errorAjax));exit;
+                }
+        
+                $id = (int)$_POST["id"];
                 if($id > 0){
                     $sql = "UPDATE ".ConstUnit::TABLE_NAME_PRODUCTS." SET ";
-                    $end = "WHERE id = ".$id;
+                    $end = " WHERE id = ".$id;
                 }
                 else{
                     $sql = "INSERT ".ConstUnit::TABLE_NAME_PRODUCTS." SET ";
@@ -91,12 +90,36 @@ class BusinessLogic
                 exit;
             break;
             case self::AJAX_EVENT_ACTION:
+                $this->checkEventFields($_POST);
+                if(!empty($this->errorAjax)){
+                    echo json_encode(array('status' => 'error', 'message' => $this->errorAjax));exit;
+                }
                 
+                $id = (int)$_POST["id"];
+                if($id > 0){
+                    $sql = "UPDATE ".ConstUnit::TABLE_SPORTING_EVENTS." SET ";
+                    $end = "WHERE id = ".$id;
+                }
+                else{
+                    $sql = "INSERT ".ConstUnit::TABLE_SPORTING_EVENTS." SET ";
+                    $end = "";
+                }
+                $sql .= "name = '".  mysql_real_escape_string($_POST["name"])."',"
+                        ."event_date = '".  $this->modifyDate($_POST["event_date"])."',"
+                        ."country = '".  mysql_real_escape_string($_POST["country"])."',"
+                        ."city = '".  mysql_real_escape_string($_POST["city"])."',"
+                        ."address = '".  mysql_real_escape_string($_POST["address"])."',"
+                        ."close_date = '".  $this->modifyDate($_POST["close_date"])."'"
+                        .$end;
+                DBunit::ConnectToDB();
+                DBunit::requestToDB($sql);
+                echo json_encode(array('status' => 'success'));
+                exit;
             break;
         }
     }
     
-    private function checkFields($post)
+    private function checkPersonFields($post)
     {
         if(!$this->checkDate($post['borndate']))
             $this->errorAjax .= 'Некорректная дата<br>';
@@ -106,6 +129,14 @@ class BusinessLogic
             $this->errorAjax .= 'Некорректный пароль<br>';
         if(!$this->checkNum($post['passport']))
             $this->errorAjax .= 'Некорректный паспорт<br>';
+    }
+    
+    private function checkEventFields($post)
+    {
+        if(!$this->checkDate($post['event_date']))
+            $this->errorAjax .= 'Некорректная дата открытия<br>';
+        if(!$this->checkDate($post['close_date']))
+            $this->errorAjax .= 'Некорректная дата закрытия<br>';
     }
     
     private function checkDate($date)
