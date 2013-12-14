@@ -1,32 +1,48 @@
 <div id="workout-plans">
     <?php
-    $coach_id = DBunit::getId($_POST["login"], $_POST["password"]);
+    $coach_id = mysql_real_escape_string($_SESSION['id']);;
     $workout_plans = DBunit::getWeekPlans($coach_id);
-    $result = "<div" . " id='weeks'" . ">";
+    $result = "";
     for ($j = 0; $j < count($workout_plans); $j++)
     {
-        //$workout_plan = DBunit::getWeekPlanWithId($workout_plans[$j]['id']);
-        $res = "<div" . " id='week'" . ">";
+        $workout_plan = $workout_plans[$j];
+        $res = "<table" . " id='week'" . ">";
+        for ($i = 0; $i < count($workout_plan); $i++)
+        {
+            if ($i == 0)
+            {
+                $res = $res . "<tr><td id='week-begin-date'>" . $workout_plan[$i]['week_begin_date'] . "</td>"
+                            . "<td id='week-end-date'>"       . $workout_plan[$i]['week_end_date']   . "</td>"
+                            . "<td id='week-comments'>"       . $workout_plan[$i]['comments']        . "</td></tr>";
+            }
+            $res = $res . "<tr id='day'>"
+                        . "<td id='name'>"   . $workout_plan[$i]['week_day']     . "</td>"
+                        . "<td id='work'>"   . $workout_plan[$i]['work']         . "</td>"
+                        . "<td id='result'>" . $workout_plan[$i]['result']       . "</td>"
+                        . "</tr>";
+        }
+        $res = $res . "</table>";
+        $result = $result . $res;
+        /*$res = "<tr><td><table" . " id='week'" . ">";
 
         for ($i = 0; $i < count($workout_plans); $i++)
         {
             //if ($i == 0)
             {
-                $res = $res . "<span id='week-begin-date'>" . $workout_plans[$i]['week_begin_date'] . "</span>"
-                    . "<span id='week-end-date'>" . $workout_plans[$i]['week_end_date'] . "</span>"
-                    . "<span id='week-comments'>" . $workout_plans[$i]['comments'] . "</span>";
+                $res = $res . "<tr><td id='week-begin-date'>" . $workout_plans[$i]['week_begin_date'] . "</td>"
+                            . "<td id='week-end-date'>" . $workout_plans[$i]['week_end_date']     . "</td>"
+                            . "<td id='week-comments'>" . $workout_plans[$i]['comments']          . "</td></tr>";
             }
-            $res = $res . "<day>"
-                . "<span id='name'>" . $workout_plans[$i]['week_day']     . "</a>"
-                . "<span>" . $workout_plans[$i]['work']         . "</span>"
-                . "<span>" . $workout_plans[$i]['result']   . "</span>"
-                . "</day>";
+            $res = $res . "<tr>"
+                . "<td id='name'>" . $workout_plans[$i]['week_day']     . "</td>"
+                . "<td>" . $workout_plans[$i]['work']                   . "</td>"
+                . "<td>" . $workout_plans[$i]['result']                 . "</td>"
+                . "</tr>";
         }
-        $res = $res . "</div>";
-        $result = $result . $res;
+        $res = $res . "</table></td></tr>";
+        $result = $result . $res;*/
     }
-    $result = $result . "</div>";
-    echo  $res;
+    echo  $result;
 
     ?>
 </div>

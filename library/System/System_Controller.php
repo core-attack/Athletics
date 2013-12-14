@@ -28,12 +28,7 @@ class System_Controller {
 			return $this->{$this->_action . 'Action'}();
 		}		
 	}
-	
-	function preDispatch()
-	{
-		
-	}
-	
+
 	function getParam($param, $default = null)
 	{
 		$array = array_merge($_POST, $_GET);

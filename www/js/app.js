@@ -1,5 +1,24 @@
 ﻿//состояния объектов, в частности инпутов
 //var stations = {"warning", "error", "info", "success"};
+
+function myOnLoad()
+{
+    var currentDate = new Date();
+    var bday = currentDate.getDate();
+    var bmonth = currentDate.getMonth() + 1;
+    var byear = currentDate.getFullYear();
+    var endDate = new Date();
+    endDate.setDate(currentDate.getDate() + 7);
+    var eday = endDate.getDate();
+    var emonth = endDate.getMonth() + 1;
+    var eyear = endDate.getFullYear();
+    $("#inputBeginDate").val(bday + "." + bmonth + "." + byear);
+    $("#inputEndDate").val(eday + "." + emonth + "." + eyear);
+
+    $("#inputWork").val("800");
+    $("#inputResult").val("2.00.04");
+}
+
 var success = "<span class=\"label label-success\">Тренировка записана</span>";
 var danger = "<span class=\"label label-danger\">Произошла ошибка</span>";
 function setWorkout()
@@ -7,69 +26,95 @@ function setWorkout()
     var date = $("#inputDate").val();
     var work = $("#inputWork").val();
     var result = $("#inputResult").val();
+    $.ajax({
+        url : "/?action=setWorkout",
+        type: "POST",
+        data : { "date" : date, "work" : work, "result" : result },
+        dataType: "application/json; charset=utf-8",
+        success: function(data){
+            //alert(data);
+            $("#button-set-workout").parent().append(success);
+        },
+        error: function(data){
+            console.log(data);
+            $("#button-set-workout").parent().append(danger);
+        }
+    });
+}
 
-    alert("типа записали");
-
-    $("#button-set-workout").parent().append(success);
-
-    var divs = document.getElementsByClassName("workoutInput");
+function setWorkoutPlan(){
+    success = "<span class=\"label label-success\">Недельный план тренировок создан</span>";
+    danger = "<span class=\"label label-danger\">Произошла ошибка в создании недельного плана тренировок</span>";
+    var divs = $(".day");
+    var beginDate = $("#inputBeginDate").val();
+    var endDate = $("#inputEndDate").val();
+    var comments = $("#inputComments").val();
+    $.ajax({
+        url : "/?action=setWorkoutWeekPlan",
+        type: "POST",
+        data : { "beginDate" : beginDate, "endDate" : endDate, "comments" : comments },
+        dataType: "application/json; charset=utf-8",
+        success: function(data){
+            //alert(data);
+            $("#button-set-workout").parent().append(success);
+        },
+        error: function(data){
+            console.log(data);
+            $("#button-set-workout").parent().append(danger);
+        }
+    });
+    success = "<span class=\"label label-success\">План тренировки создан</span>";
+    danger = "<span class=\"label label-danger\">Произошла ошибка в создании плана тренировки</span>";
     for(var i = 0; i < divs.length; i++){
         var div = divs[i];
-        var link = "http://localhost/?action=main/";// + div.getAttribute('data-type') + '/' + div.getAttribute('data-id') + "-" + div.getAttribute('data-style') + "?layout=false";
-        var xmlhttp = getXmlHttp();
-        xmlhttp.open('GET', link, true);
-        xmlhttp.targetDiv = div;
-        xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4) {
-                if(this.status == 200) {
-                    this.targetDiv.innerHTML = this.responseText;
-                }
-                else{
-                    handleError(xmlhttp.statusText);
-                }
+        var id = $(div).attr("id");
+        var day = $("#workout-day" + (i + 1)).val();
+        var work = $("#inputWork" + (i + 1)).val();
+        var result = $("#inputResult" + (i + 1)).val();
+        var day_comments = $("#inputComments" + (i + 1)).val();
+        //alert(day + work + result + comments);
+        $.ajax({
+            url : "/?action=setWorkoutPlan",
+            type: "POST",
+            data : { "beginDate" : beginDate, "endDate" : endDate, "comments" : comments,
+                "day" : day, "work" : work, "result" : result, "day_comments" : day_comments},
+            dataType: "application/json; charset=utf-8",
+            success: function(data){
+                //alert(data);
+                $("#button-set-workout").parent().append(success);
+            },
+            error: function(data){
+                console.log(data);
+                $("#button-set-workout").parent().append(danger);
             }
-        };
-        xmlhttp.send(null);
+        });
     }
 }
 
-function addWorkoutPlanDay(){
-    var div = $().clone();
-    $("set-workout-plan").appendTo($("#day")).slideDown();
-}
-
-function getXmlHttp(){
-    try {
-        return new ActiveXObject("Msxml2.XMLHTTP");
-    } catch (e) {
-        try {
-            return new ActiveXObject("Microsoft.XMLHTTP");
-        } catch (ee) {
-        }
+function addNewDay(el){
+    var day = $("#firstDay").clone().addClass("newDay");
+    var count = $(".day").length;
+    if (count < 7)
+    {
+        $(day).attr("id", "day" + (count + 1));
+        day.find('input, select').each(function(){
+            if ($(this).attr("id").indexOf("workout-day") != -1)
+                $(this).attr("id", "workout-day" + (count + 1));
+            else if ($(this).attr("id").indexOf("inputWork") != -1)
+                $(this).attr("id", "inputWork" + (count + 1));
+            else if ($(this).attr("id").indexOf("inputResult") != -1)
+                $(this).attr("id", "inputResult" + (count + 1));
+            else if ($(this).attr("id").indexOf("inputComments") != -1)
+                $(this).attr("id", "inputComments" + (count + 1));
+        });
+        $(day).appendTo("form#setWeek").slideDown();
     }
-    if (typeof XMLHttpRequest!='undefined') {
-        return new XMLHttpRequest();
-    }
+    //$(el).add("div #day").addClass("adfasdf");
+    ///var div = $("#day").clone();
+    //$("body").appendTo("asdfsadf");
+    //var days = $("#set-workout-plan .form-horizontal");
+    //days.appendTo("<p>asdfasdf</p>");//appendTo(div).slideDown();
 }
-
-// Получить данные с url и вызывать cb - коллбэк c ответом сервера
-function getUrl(url, cb) {
-    var xmlhttp = getXmlHttp();
-    // IE кэширует XMLHttpRequest запросы, так что добавляем случайный параметр к URL
-    // (хотя можно обойтись правильными заголовками на сервере)
-    xmlhttp.open("GET", url+'?r='+Math.random());
-    xmlhttp.onreadystatechange = function() {
-        if (xmlhttp.readyState == 4) {
-            cb(
-                xmlhttp.status,
-                xmlhttp.getAllResponseHeaders(),
-                xmlhttp.responseText
-            );
-        }
-    }
-    xmlhttp.send(null);
-}
-
 
 //авторизация пользователя
 function signIn() {
@@ -107,7 +152,7 @@ function loginBlurFocus() {
     $("#helpLogin").text('Привет, ' + $("#inputLogin").val());
 }
 
-//при поторе фокуса паролем
+//при вводе пароля
 function passBlurFocus() {
     var length = $("#inputPassword").val().length;
     var tooltip = "";
@@ -116,7 +161,7 @@ function passBlurFocus() {
     else if (length > 8 && length <= 12) tooltip = "Неплохой такой";
     else if (length > 12 && length <= 16) tooltip = "Хорош";
     else if (length > 16 && length <= 20) tooltip = "Шикарно!";
-    else if (length > 20 && length <= 24) tooltip = "Издеваешься?!";
+    else if (length > 20 && length <= 24) tooltip = "Издеваетесь?!";
     else if (length > 24 && length <= 30) tooltip = "Думаю, достаточно...";
     else if (length > 30 && length <= 40) tooltip = "У Вас определенно паранойя...";
     else if (length > 40) tooltip = "Вы удивительный человек...";
@@ -144,56 +189,7 @@ function girlChecked(){
 
 }
 
-
 //обработчик ошибки
 function handleError(mes){
     alert("Произошла ошибка: " +mes);
-}
-
-//возвращает объект HMLHTTP
-function getXmlHttp(){
-    var xmlhttp;
-    try {
-        xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
-    } catch (e) {
-        try {
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        } catch (E) {
-            xmlhttp = false;
-        }
-    }
-    if (!xmlhttp && typeof XMLHttpRequest!='undefined') {
-        xmlhttp = new XMLHttpRequest();
-    }
-    return xmlhttp;
-}
-
-function CreateRequest()
-{
-    var Request = false;
-    if (window.XMLHttpRequest)
-    {
-        //Gecko-совместимые браузеры, Safari, Konqueror
-        Request = new XMLHttpRequest();
-        //alert('window.XMLHttpRequest');
-    }
-    else if (window.ActiveXObject)
-    {
-        //Internet explorer
-        try
-        {
-            Request = new ActiveXObject("Microsoft.XMLHTTP");
-            alert('Microsoft.XMLHTTP');
-        }
-        catch (CatchException)
-        {
-            Request = new ActiveXObject("Msxml2.XMLHTTP");
-            alert('Msxml2.XMLHTTP');
-        }
-    }
-    if (!Request)
-    {
-        alert("Невозможно создать XMLHttpRequest");
-    }
-    return Request;
 }

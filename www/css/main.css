@@ -101,3 +101,7 @@ div.sheet_head{
     clear: both;
 }
 
+#user-id{
+    display: none;
+}
+

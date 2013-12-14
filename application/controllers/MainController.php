@@ -20,7 +20,7 @@ class Main extends System_Controller {
         $this->layout->setLayout($layout);
         $this->view->test = "test";
         $products = array();
-        $products = DBunit::getProducts();
+        //$products = DBunit::getProducts();
 
         $this->view->products = $products;
         return $this->render();
@@ -47,7 +47,7 @@ class Main extends System_Controller {
     function authAction()
     {
         if($this->BusinessLogic->authUser())
-            $this->mainAction ();
+            $this->mainAction();
         else
             header('/');
     }
@@ -102,6 +102,25 @@ class Main extends System_Controller {
             echo '1';
         else
             echo '0';
+    }
+
+    function setWorkoutAction()
+    {
+        DBunit::ConnectToDB();
+        DBunit::setWorkout($_SESSION['id'], $_POST['date'], $_POST['work'], $_POST['result']);
+    }
+
+    function setWorkoutPlanAction()
+    {
+        DBunit::ConnectToDB();
+        DBunit::setWorkoutPlan($_SESSION['id'],  $_POST['beginDate'], $_POST['endDate'], $_POST['comments'],
+                                    $_POST['day'], $_POST['work'], $_POST['result'], $_POST['day_comments']);
+    }
+
+    function setWorkoutWeekPlanAction()
+    {
+        DBunit::ConnectToDB();
+        DBunit::setWorkoutWeekPlan($_SESSION['id'], $_POST['beginDate'], $_POST['endDate'], $_POST['comments']);
     }
 
     function createAction() {

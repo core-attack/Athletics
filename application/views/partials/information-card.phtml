@@ -1,15 +1,17 @@
 <div class="information-card">
     <?php
     //запрос к бд
-    $id = DBunit::getId($_POST["login"], $_POST["password"]);
+    $id = mysql_real_escape_string($_SESSION['id']);
     $info = DBunit::getUserInfo($id);
     ?>
-    <label class="control-label" id="user-info">Имя: <?php echo $info['name']?></label>
-    <label class="control-label" id="user-info">Фамилия: <?php echo $info['sname']?></label>
-    <label class="control-label" id="user-info">Отчество: <?php echo $info['lname']?></label>
-    <label class="control-label" id="user-info">E-mail: <?php echo $info['email']?></label>
-    <label class="control-label" id="user-info">Дата рождения: <?php echo $info['borndate']?></label>
-    <label class="control-label" id="user-info">ИНН: <?php echo $info['tin']?></label>
-    <label class="control-label" id="user-info">Паспорт: <?php echo $info['passport']?></label>
-    <label class="control-label" id="user-info">Логин: <?php echo $info['login']?></label>
+    <table>
+    <tr><td class="control-label" id="user-info">Имя: <?php echo $info['name']?>                </td></tr>
+    <tr><td class="control-label" id="user-info">Фамилия: <?php echo $info['sname']?>           </td></tr>
+    <tr><td class="control-label" id="user-info">Отчество: <?php echo $info['lname']?>          </td></tr>
+    <tr><td class="control-label" id="user-info">E-mail: <?php echo $info['email']?>            </td></tr>
+    <tr><td class="control-label" id="user-info">Дата рождения: <?php echo $info['borndate']?>  </td></tr>
+    <tr><td class="control-label" id="user-info">ИНН: <?php echo $info['tin']?>                 </td></tr>
+    <tr><td class="control-label" id="user-info">Паспорт: <?php echo $info['passport']?>        </td></tr>
+    <tr><td class="control-label" id="user-info">Логин: <?php echo $info['login']?>             </td></tr>
+    </table>
 </div>

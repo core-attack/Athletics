@@ -1,10 +1,28 @@
 <div id="set-workout-plan">
-    <form class="form-horizontal" role="form">
-        <div id="day">
+    <form class="form-horizontal" role="form" id="setWeek">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Начало недели</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputBeginDate" placeholder="Начало недели">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Конец недели</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputEndDate" placeholder="Конец недели">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Комментарии</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputComments" placeholder="Комментарии">
+            </div>
+        </div>
+        <div class="day" id="firstDay">
             <div class="form-group">
-                <label for="inputDate" class="col-sm-2 control-label">День</label>
+                <label class="col-sm-2 control-label">День</label>
                 <div class="col-sm-10">
-                    <select class="form-control" id="workout-day" placeholder="День недели">
+                    <select class="form-control" id="workout-day1" placeholder="День недели">
                         <option>ПН</option>
                         <option>ВТ</option>
                         <option>СР</option>
@@ -17,23 +35,30 @@
 
             </div>
             <div class="form-group">
-                <label for="inputWork" class="col-sm-2 control-label">Работа</label>
+                <label class="col-sm-2 control-label">Работа</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputWork" placeholder="Выполненная работа">
+                    <input type="text" class="form-control" id="inputWork1" placeholder="Выполненная работа">
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputResult" class="col-sm-2 control-label">Результат</label>
+                <label class="col-sm-2 control-label">Результат</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputResult" placeholder="Результаты">
+                    <input type="text" class="form-control" id="inputResult1" placeholder="Результаты">
                 </div>
             </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-                <button type="button" class="btn btn-primary" id="button-add-workout-plan" onclick="addNewDay();">Добавить день</button>
-                <button type="button" class="btn btn-primary" id="button-set-workout-plan" onclick="setWorkoutPlan();">Записать план тренировок</button>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Комментарии</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputComments1" placeholder="Комментарии">
+                </div>
             </div>
+            <hr>
         </div>
     </form>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="button" class="btn btn-primary" id="button-add-workout-plan" onclick="addNewDay(this);">Добавить день</button>
+            <button type="button" class="btn btn-primary" id="button-set-workout-plan" onclick="setWorkoutPlan();">Записать план тренировок</button>
+        </div>
+    </div>
 </div>
