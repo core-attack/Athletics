@@ -261,12 +261,12 @@ require_once('System/System_Const.php');
         }
 
         //возвращает ид тренера
-        static function getCoachId($md5_id)
+        static function getUserId($md5_id)
         {
             $query = "select id from "
                 . ConstUnit::TABLE_USERS
                 . " where md5(id) = '" . $md5_id . "'";
-            echo $query;
+            //echo $query;
             $result = mysql_query($query) or die('Query failed: ' . mysql_error());
             while ($data = mysql_fetch_object($result))
                 return array("id" => $data->id);
@@ -450,9 +450,19 @@ require_once('System/System_Const.php');
         //создает заявку на участие
         static function createClaim($athlete_id, $event_id)
         {
+            $id = DBunit::getUserId($athlete_id);
             $query = "INSERT INTO " . ConstUnit::TABLE_CLAIMS .
                 " (id, athlete_id, event_id) " .
-                " VALUES ( '" . '' . "', '" . $athlete_id . "', '" . $event_id . "' );";
+                " VALUES ( '" . '' . "', " . $id["id"] . ", " . $event_id . " );";
+            self::requestToDB($query);
+        }
+        //удаляет заявку на участие
+        static function removeClaim($athlete_id, $event_id)
+        {
+            $id = DBunit::getUserId($athlete_id);
+            $query = "delete from " . ConstUnit::TABLE_CLAIMS
+                . " where athlete_id = " . $id["id"]
+                . " and event_id = " . $event_id;
             self::requestToDB($query);
         }
         //создает дисциплину
@@ -487,11 +497,13 @@ require_once('System/System_Const.php');
             self::requestToDB($query);
         }
         //создает соревнование
-        static function createSportingEvent($name, $event_date, $close_date, $country, $city, $address)
+        static function createSportingEvent($name, $event_date, $close_date, $country, $city, $address, $creater_id)
         {
+            $id = DBunit::getUserId($creater_id);
             $query = "INSERT INTO " . ConstUnit::TABLE_SPORTING_EVENTS .
-                " (id, event_date, close_date, country, city, address) " .
-                " VALUES ( '" . '' . "', '" . $name . "', '" . $event_date . "', '" . $close_date . "', '" . $country . "', '" . $city . "', '" . $address . "'   );";
+                " (id, name, event_date, close_date, country, city, address, creater_id) " .
+                " VALUES ( '" . '' . "', '" . $name . "', " . "str_to_date('" . $event_date . "', '%d.%m.%Y') , " . "str_to_date('" .  $close_date . "', '%d.%m.%Y') , '" . $country . "', '" . $city . "', '" . $address . "',   " . $id["id"] . ")";
+            echo $query;
             self::requestToDB($query);
         }
         //создает пользователя
@@ -604,7 +616,7 @@ require_once('System/System_Const.php');
         static function setWorkoutWeekPlan($md5_coach_id, $beginDate, $endDate, $comments)
         {
             self::ConnectToDB();
-            $coach_id = DBunit::getCoachId($md5_coach_id);
+            $coach_id = DBunit::getUserId($md5_coach_id);
             $coach_id = $coach_id["id"];
             //echo " coach_id = " . $coach_id;
             $query = "insert into " . ConstUnit::TABLE_WORKOUT_WEEK_PLANS
@@ -622,7 +634,7 @@ require_once('System/System_Const.php');
         static function setWorkoutPlan($md5_coach_id, $beginDate, $endDate, $comments, $day, $work, $result, $day_comments)
         {
             self::ConnectToDB();
-            $coach_id = DBunit::getCoachId($md5_coach_id);
+            $coach_id = DBunit::getUserId($md5_coach_id);
             $coach_id = $coach_id["id"];
             //echo " coach_id = " . $coach_id;
             $workout_week_plan_id = DBunit::getWorkoutWeekPlanId($beginDate, $endDate, $comments, $coach_id);

@@ -123,6 +123,24 @@ class Main extends System_Controller {
         DBunit::setWorkoutWeekPlan($_SESSION['id'], $_POST['beginDate'], $_POST['endDate'], $_POST['comments']);
     }
 
+    function setSportingEventAction()
+    {
+        DBunit::ConnectToDB();
+        DBunit::createSportingEvent($_POST['eventName'], $_POST['beginDate'], $_POST['closeDate'], $_POST['country'], $_POST['city'], $_POST['addressee'], $_SESSION['id']);
+    }
+
+    function sendClaimAction()
+    {
+        DBunit::ConnectToDB();
+        DBunit::createClaim($_SESSION["id"], $_POST['event_id']);
+    }
+
+    function cancelClaimAction()
+    {
+        DBunit::ConnectToDB();
+        DBunit::removeClaim($_SESSION["id"], $_POST['event_id']);
+    }
+
     function createAction() {
         DBunit::ConnectToDB();
         DBunit::createTable();

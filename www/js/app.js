@@ -91,6 +91,136 @@ function setWorkoutPlan(){
     }
 }
 
+function openCreateEventDialog(){
+    $("#button-add-event").hide();
+    var eventDialog = document.createElement("div");
+    $(eventDialog).attr("className", "dialog");
+    $(eventDialog).attr("id", "SportingEventDialog");
+    $(eventDialog).append(
+            "<form class=\"form-horizontal\" role=\"form\" id=\"setEvent\">																					"+
+            "            <div class=\"form-group\">																											"+
+            "               <label class=\"col-sm-2 control-label\">Наименование</label>																	"+
+            "               <div class=\"col-sm-10\">																										"+
+            "                   <input type=\"text\" class=\"form-control\" id=\"inputEventName\" placeholder=\"Наименование\">								"+
+            "                   </div>																														"+
+            "           </div>																																"+
+            "           <div class=\"form-group\">																											"+
+            "               <label class=\"col-sm-2 control-label\">Дата открытия</label>																	"+
+            "               <div class=\"col-sm-10\">																										"+
+            "                   <input type=\"text\" class=\"form-control\" id=\"inputEventBeginDate\" placeholder=\"Дата открытия\">						"+
+            "               </div>																															"+
+            "           </div>																																"+
+            "           <div class=\"form-group\">																											"+
+            "               <label class=\"col-sm-2 control-label\">Страна</label>																			"+
+            "               <div class=\"col-sm-10\">																										"+
+            "                   <input type=\"text\" class=\"form-control\" id=\"inputEventCountry\" placeholder=\"Страна\">								"+
+            "               </div>																															"+
+            "           </div>																																"+
+            "           <div class=\"form-group\">																											"+
+            "               <label class=\"col-sm-2 control-label\">Город</label>																			"+
+            "               <div class=\"col-sm-10\">																										"+
+            "                   <input type=\"text\" class=\"form-control\" id=\"inputEventCity\" placeholder=\"Город\">									"+
+            "               </div>																															"+
+            "           </div>																																"+
+            "           <div class=\"form-group\">																											"+
+            "               <label class=\"col-sm-2 control-label\">Адрес</label>																			"+
+            "               <div class=\"col-sm-10\">																										"+
+            "                   <input type=\"text\" class=\"form-control\" id=\"inputEventAddressee\" placeholder=\"Адрес\">								"+
+            "                   </div>																														"+
+            "               </div>																															"+
+            "           <div class=\"form-group\">																											"+
+            "               <label class=\"col-sm-2 control-label\">Дата закрытия</label>																	"+
+            "               <div class=\"col-sm-10\">																										"+
+            "                   <input type=\"text\" class=\"form-control\" id=\"inputEventCloseDate\" placeholder=\"Дата закрытия\">						"+
+            "               </div>																															"+
+            "           </div>																																"+
+            "           <div class=\"form-group\">																											"+
+            "               <div class=\"col-sm-offset-2 col-sm-10\">																						"+
+            "                   <button type=\"button\" class=\"btn btn-primary\" id=\"button-add-sporting-event\" onclick=\"createSportingEvent();\">Создать</button>"+
+            "                   <button type=\"button\" class=\"btn \" id=\"button-cancel\" onclick=\"cancel();\">Отмена</button>					"+
+            "               </div>																															"+
+            "           </div>																																"+
+            "       </form>"
+    );
+    $("#set-sport-events").append(eventDialog);
+}
+
+function createSportingEvent()
+{
+    success = "<span class=\"label label-success\">Соренование создано</span>";
+    danger = "<span class=\"label label-danger\">Произошла ошибка в создании соревнования</span>";
+    var eventName = $("#inputEventName").val();
+    var beginDate = $("#inputEventBeginDate").val();
+    var closeDate = $("#inputEventCloseDate").val();
+    var addressee = $("#inputEventAddressee").val();
+    var city = $("#inputEventCity").val();
+    var country = $("#inputEventCountry").val();
+    $.ajax({
+        url : "/?action=setSportingEvent",
+        type: "POST",
+        data : { "beginDate" : beginDate, "closeDate" : closeDate, "eventName" : eventName,
+            "addressee" : addressee, "city" : city, "country" : country},
+        dataType: "application/json; charset=utf-8",
+        success: function(data){
+            $("#button-add-sporting-event").parent().append(success);
+        },
+        error: function(data){
+            console.log(data);
+            $("#button-add-sporting-event").parent().append(danger);
+        }
+    });
+}
+
+function cancel()
+{
+    $("#button-add-event").show();
+    $("#SportingEventDialog").remove();
+}
+
+function sendClaim(el)
+{
+    var eventId = $(el).attr("event-id");
+    $("#button-send-claim-" + eventId).hide();
+    $("#button-cancel-claim-" + eventId).show();
+    success = "<span class=\"label label-success\">Заявка подана</span>";
+    danger = "<span class=\"label label-danger\">Произошла ошибка в подаче заявки</span>";
+    $.ajax({
+        url : "/?action=sendClaim",
+        type: "POST",
+        data : { "event_id" : eventId },
+        dataType: "application/json; charset=utf-8",
+        success: function(data){
+            $("#button-add-sporting-event").parent().append(success);
+        },
+        error: function(data){
+            console.log(data);
+            $("#button-add-sporting-event").parent().append(danger);
+        }
+    });
+}
+
+function cancelClaim(el)
+{
+    var eventId = $(el).attr("event-id");
+    $("#button-send-claim-" + eventId).show();
+    $("#button-cancel-claim-" + eventId).hide();
+    success = "<span class=\"label label-success\">Заявка отозвана</span>";
+    danger = "<span class=\"label label-danger\">Произошла ошибка в отзыве заявки</span>";
+    $.ajax({
+        url : "/?action=cancelClaim",
+        type: "POST",
+        data : { "event_id" : eventId },
+        dataType: "application/json; charset=utf-8",
+        success: function(data){
+            $("#button-add-sporting-event").parent().append(success);
+        },
+        error: function(data){
+            console.log(data);
+            $("#button-add-sporting-event").parent().append(danger);
+        }
+    });
+}
+
 function addNewDay(el){
     var day = $("#firstDay").clone().addClass("newDay");
     var count = $(".day").length;
