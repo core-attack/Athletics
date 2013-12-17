@@ -745,8 +745,8 @@ require_once('System/System_Const.php');
                     "lname" => $item["lname"],
                     "category" => $item["category"],
                     "borndate" => $item["borndate"],
-                    "passport" => $item["passport"]
-                "role_id" => $item["role_id"]
+                    "passport" => $item["passport"],
+                    "role_id" => $item["role_id"]
                 );
             }
             self::CloseConnection();
