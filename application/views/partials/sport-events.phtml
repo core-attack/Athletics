@@ -13,10 +13,8 @@
             . "<td>" . $events[$i]['city']     . "</td>"
             . "<td>" . $events[$i]['address']   . "</td>"
             . "<td>" . $events[$i]['close_date']   . "</td>"
-            . "<td>" . "<button type=\"button\" class=\"btn btn-success\" id=\"button-send-claim-" . $events[$i]['id'] . "\" event-id=\""
+            . "<td>" . "<div id=\"button-place-" . $events[$i]['id'] . "\"><button type=\"button\" class=\"btn btn-success\" id=\"button-send-claim-" . $events[$i]['id'] . "\" event-id=\""
             . $events[$i]['id'] . "\"onclick=\"sendClaim(this);\" >Подать заявку</button>"
-            . "<button type=\"button\" class=\"btn btn-warning cancel-claim\" id=\"button-cancel-claim-" . $events[$i]['id'] . "\" event-id=\""
-            . $events[$i]['id'] . "\"onclick=\"cancelClaim(this);\" >Отменить заявку</button>"
             . "</td>"
             . "</tr>";
     }
