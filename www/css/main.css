@@ -107,3 +107,10 @@ div.sheet_edit a{
     cursor: pointer;
 }
 
+#user-id{
+    display: none;
+}
+
+.cancel-claim{
+    display: none;
+}

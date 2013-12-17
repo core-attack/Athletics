@@ -1,23 +1,25 @@
 <div id="workout-plan">
     <?php
-    $workout_plan = DBunit::getWeekPlan();
-    $res = "<div" . " id='week'" . ">";
+    $id = mysql_real_escape_string($_SESSION['id']);
+    $coaches_ids = DBunit::getCoachForAthlete($id);
+    $workout_plan = DBunit::getWeekPlan($coaches_ids);
+    $res = "<table" . " id='week'" . ">";
 
     for ($i = 0; $i < count($workout_plan); $i++)
     {
         if ($i == 0)
         {
-            $res = $res . "<span id='week-begin-date'>" . $workout_plan[$i]['week_begin_date'] . "</span>"
-                        . "<span id='week-end-date'>" . $workout_plan[$i]['week_end_date'] . "</span>"
-                        . "<span id='week-comments'>" . $workout_plan[$i]['comments'] . "</span>";
+            $res = $res . "<tr><td id='week-begin-date'>" . $workout_plan[$i]['week_begin_date'] . "</td>"
+                        . "<td id='week-end-date'>"   . $workout_plan[$i]['week_end_date']   . "</td>"
+                        . "<td id='week-comments'>"   . $workout_plan[$i]['comments']        . "</td></tr>";
         }
-        $res = $res . "<day>"
-            . "<span id='name'>" . $workout_plan[$i]['week_day']     . "</a>"
-            . "<span>" . $workout_plan[$i]['work']         . "</span>"
-            . "<span>" . $workout_plan[$i]['result']   . "</span>"
-            . "</day>";
+        $res = $res . "<tr id='day'>"
+            . "<td id='name'>"   . $workout_plan[$i]['week_day']     . "</td>"
+            . "<td id='work'>"   . $workout_plan[$i]['work']         . "</td>"
+            . "<td id='result'>" . $workout_plan[$i]['result']       . "</td>"
+            . "</tr>";
     }
-    $res = $res . "</div>";
+    $res = $res . "</table>";
     echo  $res;
 
     ?>

@@ -1,17 +1,7 @@
 <div id="workouts">
     <?php
-    $id = DBunit::getId($_POST["login"], $_POST["password"]);
+    $id = mysql_real_escape_string($_SESSION['id']);
     $workouts = DBunit::getAllWorkouts($id);
-    /*$res = "&lttable id='workouts'&gt";
-    for ($i = 0; $i < count($workouts); $i++)
-    {
-        $res = $res . "&lttr&gt"
-            . "&lttd&gt" . $workouts[$i]['id'] . "&lt/td&gt"
-            . "&lttd&gt" . $workouts[$i]['date'] . "&lt/td&gt"
-            . "&lttd&gt" . $workouts[$i]['work'] . "&lt/td&gt"
-            . "&lttd&gt" . $workouts[$i]['result'] . "&lt/td&gt"
-            . "&lt/tr&gt";
-    }*/
     $res = "<table" . " id='workouts'" . ">";
     for ($i = 0; $i < count($workouts); $i++)
     {

@@ -1,0 +1,15 @@
+<?php
+echo $this->partial('header', $this);
+//личные данные
+echo $this->partial('information-card', $this);
+//форма записи планов тренировок
+echo $this->partial('set-workout-plan', $this);
+//последние планы тренировок
+echo $this->partial('workout-plans', $this);
+//предстоящие соревнования
+echo $this->partial('sport-events', $this);
+//создать соренование
+echo $this->partial('set-sport-events', $this);
+?>
+
+<?php echo $this->partial('footer', $this); ?>

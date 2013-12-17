@@ -1,0 +1,28 @@
+<?php
+
+echo $this->partial('header', $this);
+//личные данные
+echo $this->partial('information-card', $this);
+//форма записи тренировок
+
+echo $this->partial('set-workout', $this);
+//последние тренировки
+echo $this->partial('workouts', $this);
+//echo 4;
+//die;
+//статистика
+echo $this->partial('statistic', $this);
+//предстоящие соревнования
+echo $this->partial('sport-events', $this);
+//план тренировок
+//echo 5;
+//die;
+
+echo $this->partial('workout-plan', $this);
+//echo 6;
+//die;
+?>
+<a id="user-id" user-id="<?php echo mysql_real_escape_string($_SESSION['id'])?>"></a>
+<?php echo $this->partial('footer', $this); //echo 11;
+//die;
+?>
