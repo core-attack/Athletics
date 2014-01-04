@@ -1,6 +1,9 @@
 
 <div class="tabs">
         <div>
+            <div class="sheet" style="width: 50px;">
+                &nbsp;
+            </div>
             <div class="sheet_head">
                 Логин
             </div>
@@ -27,31 +30,16 @@
             </div>
         </div>
     <?php foreach($this->items as $item): ?>
-        <div id="<?=$item['id']?>" class="row">
-            <div class="sheet">
-                <?=$item['login']?>
-            </div>
-            <div class="sheet">
-                <?=$item['password']?>
-            </div>
-            <div class="sheet">
-                <?=$item['name']?>
-            </div>
-            <div class="sheet">
-                <?=$item['sname']?>
-            </div>
-            <div class="sheet">
-                <?=$item['lname']?>
-            </div>
-            <div class="sheet">
-                <?=$item['category']?>
-            </div>
-            <div class="sheet">
-                <?=$item['borndate']?>
-            </div>
-            <div class="sheet">
-                <?=$item['passport']?>
-            </div>
+        <div id="<?=$item['id']?>" class="row" rel="person">
+            <div class="sheet_edit" style="width: 50px;"><a class="edit_row">[ред]</a><a class="save_row" rel="<?=$item['role_id']?>" style="display: none;">[сох]</a></div>
+            <div class="sheet" rel="login"><?=$item['login']?></div>
+            <div class="sheet" rel="password"><?=$item['password']?></div>
+            <div class="sheet" rel="name"><?=$item['name']?></div>
+            <div class="sheet" rel="sname"><?=$item['sname']?></div>
+            <div class="sheet" rel="lname"><?=$item['lname']?></div>
+            <div class="sheet_select" rel="category"><?=$item['category']?></div>
+            <div class="sheet" rel="borndate"><?=implode('-', array_reverse(explode('-', $item['borndate'])))?></div>
+            <div class="sheet" rel="passport"><?=$item['passport']?></div>
         </div>
     <?php endforeach; ?>
 </div>

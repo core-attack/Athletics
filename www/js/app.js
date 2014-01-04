@@ -177,59 +177,48 @@ function cancel()
     $("#SportingEventDialog").remove();
 }
 
-
-var value_send = "Подать заявку";
-var value_cancel = "Отменить заявку";
-var js_send = "sendClaim(this);";
-var js_cancel = "cancelClaim(this);";
-var class_send = "btn btn-success";
-var class_cancel = "btn btn-warning";
-var ID_SEND = "#button-send-claim-";
-var ID_CANCEL = "#button-cancel-claim-";
-
 function sendClaim(el)
 {
     var eventId = $(el).attr("event-id");
-    if ($(el).hasClass(class_send))
-    {
-        $(el).text(value_cancel);
-        $(el).removeClass(class_send).addClass(class_cancel);
-        success = "<span class=\"label label-success\">Заявка подана</span>";
-        danger = "<span class=\"label label-danger\">Произошла ошибка в подаче заявки</span>";
-        $.ajax({
-            url : "/?action=sendClaim",
-            type: "POST",
-            data : { "event_id" : eventId },
-            dataType: "application/json; charset=utf-8",
-            success: function(data){
-                $("#button-add-sporting-event").parent().append(success);
-            },
-            error: function(data){
-                console.log(data);
-                $("#button-add-sporting-event").parent().append(danger);
-            }
-        });
-    }
-    else if  ($(el).hasClass(class_cancel))
-    {
-        $(el).text(value_send);
-        $(el).removeClass(class_cancel).addClass(class_send);
-        success = "<span class=\"label label-success\">Заявка отозвана</span>";
-        danger = "<span class=\"label label-danger\">Произошла ошибка в отзыве заявки</span>";
-        $.ajax({
-            url : "/?action=cancelClaim",
-            type: "POST",
-            data : { "event_id" : eventId },
-            dataType: "application/json; charset=utf-8",
-            success: function(data){
-                $("#button-add-sporting-event").parent().append(success);
-            },
-            error: function(data){
-                console.log(data);
-                $("#button-add-sporting-event").parent().append(danger);
-            }
-        });
-    }
+    $("#button-send-claim-" + eventId).hide();
+    $("#button-cancel-claim-" + eventId).show();
+    success = "<span class=\"label label-success\">Заявка подана</span>";
+    danger = "<span class=\"label label-danger\">Произошла ошибка в подаче заявки</span>";
+    $.ajax({
+        url : "/?action=sendClaim",
+        type: "POST",
+        data : { "event_id" : eventId },
+        dataType: "application/json; charset=utf-8",
+        success: function(data){
+            $("#button-add-sporting-event").parent().append(success);
+        },
+        error: function(data){
+            console.log(data);
+            $("#button-add-sporting-event").parent().append(danger);
+        }
+    });
+}
+
+function cancelClaim(el)
+{
+    var eventId = $(el).attr("event-id");
+    $("#button-send-claim-" + eventId).show();
+    $("#button-cancel-claim-" + eventId).hide();
+    success = "<span class=\"label label-success\">Заявка отозвана</span>";
+    danger = "<span class=\"label label-danger\">Произошла ошибка в отзыве заявки</span>";
+    $.ajax({
+        url : "/?action=cancelClaim",
+        type: "POST",
+        data : { "event_id" : eventId },
+        dataType: "application/json; charset=utf-8",
+        success: function(data){
+            $("#button-add-sporting-event").parent().append(success);
+        },
+        error: function(data){
+            console.log(data);
+            $("#button-add-sporting-event").parent().append(danger);
+        }
+    });
 }
 
 function addNewDay(el){

@@ -2,9 +2,9 @@
 
 <div id="tabs">
   <ul>
-    <li><a href="#tabs-1">Спортсмены</a></li>
-    <li><a href="#tabs-2">Тренера</a></li>
-    <li><a href="#tabs-3">Мероприятия</a></li>
+    <li><a href="#tabs-1" id="sportsmens">Спортсмены</a></li>
+    <li><a href="#tabs-2" id="treners">Тренера</a></li>
+    <li><a href="#tabs-3" id="events">Мероприятия</a></li>
   </ul>    
     <div id="tabs-1" class="tab_block">
         <?php echo $this->partial('addingPersonForm', array('role' => BusinessLogic::ROLE_SPORTSMEN)); ?>
@@ -15,6 +15,7 @@
         <?php echo $this->partial('personsList', array('items' => $this->treners)); ?>
     </div>
     <div id="tabs-3" class="tab_block">
+        <?php echo $this->partial('addingEventForm', $this); ?>
         <?php echo $this->partial('eventsList', $this); ?>
     </div>
 </div>

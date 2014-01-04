@@ -1,0 +1,86 @@
+<div class="box">
+    <form action="" method="POST" id="formEvent" style="float: left;">
+        <table>
+            <tr>
+                <td>
+                    Название
+                </td>
+                <td>
+                    <input type="text" name="name" /><br />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Дата открытия
+                </td>
+                <td>
+                    <input type="text" name="event_date" /><br />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Страна
+                </td>
+                <td>
+                    <input type="text" name="country" /><br />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Город
+                </td>
+                <td>
+                    <input type="text" name="city" /><br />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Место проведения
+                </td>
+                <td>
+                    <input type="text" name="address" /><br />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Дата закрытия
+                </td>
+                <td>
+                    <input type="text" name="close_date" /><br />
+                </td>
+            </tr>
+        </table>
+        <input type="hidden" name="type" value="<?=BusinessLogic::AJAX_EVENT_ACTION?>" />        
+        <input type="button" id="submitEvent" value="Добавить" />        
+    </form>
+    <div id="error_box_event" style="float: left;color: red;"></div>
+</div>
+<script type="text/javascript">
+$(document).ready(function()
+{
+    $("#submitEvent").on("click", function()
+    {
+        var post = $("#formEvent").serialize();
+        $.ajax({
+            url: '?action=ajax',
+            type: 'post',
+            data: post,
+            dataType: 'json',
+            success: function(data)
+            {
+                if(data.status == 'success')
+                    window.location.reload();
+                else
+                    $('#error_box_event').html(data.message);
+            },
+            error: function(data)
+            {
+                console.log(data);
+            }
+        });
+    });
+})
+</script>
+<div class="clear"></div>
+<br>
+<br>

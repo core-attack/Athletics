@@ -87,7 +87,7 @@ span{
 #day{
     display: list-item;
 }
-div.sheet{
+div.sheet, div.sheet_select, div.sheet_edit{
     display: inline-block;
     width: 150px;
 }
@@ -100,11 +100,17 @@ div.sheet_head{
 .clear{
     clear: both;
 }
+.short_input{
+    width: 100px;
+}
+div.sheet_edit a{
+    cursor: pointer;
+}
 
 #user-id{
     display: none;
 }
 
 .cancel-claim{
-    Ddisplay: none;
+    display: none;
 }
