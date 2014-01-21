@@ -1,6 +1,25 @@
 ﻿//состояния объектов, в частности инпутов
 //var stations = {"warning", "error", "info", "success"};
 
+function exit()
+{
+    $.ajax({
+        url : "/?action=exit",
+        type: "POST",
+        //data : {  },
+        success: function(data){
+            //alert(data);
+            //$("#button-set-workout").parent().append(success);
+            document.location.href = "http://localhost";
+        },
+        error: function(data){
+            console.log(data);
+            //document.location.href = "http://localhost";
+            //$("#button-set-workout").parent().append(danger);
+        }
+    });
+}
+
 function myOnLoad()
 {
     var currentDate = new Date();
@@ -30,7 +49,7 @@ function setWorkout()
         url : "/?action=setWorkout",
         type: "POST",
         data : { "date" : date, "work" : work, "result" : result },
-        dataType: "application/json; charset=utf-8",
+        //dataType: "application/json; charset=utf-8",
         success: function(data){
             //alert(data);
             $("#button-set-workout").parent().append(success);
@@ -53,7 +72,7 @@ function setWorkoutPlan(){
         url : "/?action=setWorkoutWeekPlan",
         type: "POST",
         data : { "beginDate" : beginDate, "endDate" : endDate, "comments" : comments },
-        dataType: "application/json; charset=utf-8",
+        //dataType: "application/json; charset=utf-8",
         success: function(data){
             //alert(data);
             $("#button-set-workout").parent().append(success);
@@ -78,7 +97,7 @@ function setWorkoutPlan(){
             type: "POST",
             data : { "beginDate" : beginDate, "endDate" : endDate, "comments" : comments,
                 "day" : day, "work" : work, "result" : result, "day_comments" : day_comments},
-            dataType: "application/json; charset=utf-8",
+            //dataType: "application/json; charset=utf-8",
             success: function(data){
                 //alert(data);
                 $("#button-set-workout").parent().append(success);
@@ -90,7 +109,7 @@ function setWorkoutPlan(){
         });
     }
 }
-
+/*
 function openCreateEventDialog(){
     $("#button-add-event").hide();
     var eventDialog = document.createElement("div");
@@ -143,7 +162,7 @@ function openCreateEventDialog(){
             "       </form>"
     );
     $("#set-sport-events").append(eventDialog);
-}
+}*/
 
 function createSportingEvent()
 {
@@ -160,7 +179,7 @@ function createSportingEvent()
         type: "POST",
         data : { "beginDate" : beginDate, "closeDate" : closeDate, "eventName" : eventName,
             "addressee" : addressee, "city" : city, "country" : country},
-        dataType: "application/json; charset=utf-8",
+        //dataType: "application/json; charset=utf-8", /*из-за этой строки ошибка, не может понять возвращаемый тип данных*/
         success: function(data){
             $("#button-add-sporting-event").parent().append(success);
         },
@@ -169,12 +188,16 @@ function createSportingEvent()
             $("#button-add-sporting-event").parent().append(danger);
         }
     });
+    //cancel();
+    //надо будет дёрнуть автообновление предстоящих соревнований
 }
 
 function cancel()
 {
-    $("#button-add-event").show();
-    $("#SportingEventDialog").remove();
+    //$("#button-add-event").show();
+    //$("#SportingEventDialog").remove();
+    $("#create").hide();
+    $("#lean_overlay").hide();
 }
 
 function sendClaim(el)

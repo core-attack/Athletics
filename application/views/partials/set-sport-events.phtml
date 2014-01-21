@@ -1,7 +1,47 @@
 <div id="set-sport-events">
-    <?php
-    ?>
-    <button type="button" class="btn btn-primary" id="button-add-event" onclick="openCreateEventDialog();">Создать соревнование</button>
-
-
+    <!--<button type="button" class="btn-1" id="button-add-event" onclick="openCreateEventDialog();">Создать соревнование</button>-->
+    <div id="btn-create">
+        <a rel="leanModal" href="#create">Создать соревнование</a>
+        <div class="clr"></div>
+        <br><br>
+        <hr>
+    </div>
+</div>
+<div id="create">
+    <div class="form-pos-up-part">
+        <div class="form-title">
+            <span>Создание соревнования</span>
+        </div>
+        <div class="form-line"></div>
+    </div>
+    <form id="setEvent">
+        <div class="txt-fld">
+            <label for="inputEventName">Наименование</label>
+            <input id="inputEventName" class="good_input" name="" type="text" />
+        </div>
+        <div class="txt-fld">
+            <label for="inputEventBeginDate">Дата открытия</label>
+            <input id="inputEventBeginDate" name="" type="text" />
+        </div>
+        <div class="txt-fld">
+            <label for="inputEventCountry">Страна</label>
+            <input id="inputEventCountry" name="" type="text" />
+        </div>
+        <div class="txt-fld">
+            <label for="inputEventCity">Город</label>
+            <input id="inputEventCity" name="" type="text" />
+        </div>
+        <div class="txt-fld">
+            <label for="inputEventAddressee">Адрес</label>
+            <input id="inputEventAddressee" name="" type="text" />
+        </div>
+        <div class="txt-fld">
+            <label for="inputEventCloseDate">Дата закрытия</label>
+            <input id="inputEventCloseDate" name="" type="text" />
+        </div>
+        <div class="coach-btns">
+            <button type="button" class="btn " id="button-cancel" onclick="cancel();">Отмена</button>
+            <button type="button" class="btn btn-primary" id="button-add-sporting-event" onclick="createSportingEvent();">Создать</button>
+        </div>
+    </form>
 </div>

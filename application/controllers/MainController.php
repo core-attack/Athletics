@@ -146,4 +146,9 @@ class Main extends System_Controller {
         DBunit::createTable();
         DBunit::CloseConnection();
     }
+
+    function exitAction(){
+        session_destroy();
+
+    }
 }

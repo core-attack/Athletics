@@ -1,22 +1,44 @@
 <div id="workouts">
-    <?php
-    $id = mysql_real_escape_string($_SESSION['id']);
-    $workouts = DBunit::getAllWorkouts($id);
-    $res = "<table" . " id='workouts'" . ">";
-    for ($i = 0; $i < count($workouts); $i++)
-    {
-        $res = $res . "<tr>"
-            . "<td>" . $workouts[$i]['id']     . "</td>"
-            . "<td>" . $workouts[$i]['date']   . "</td>"
-            . "<td>" . $workouts[$i]['work']   . "</td>"
-            . "<td>" . $workouts[$i]['result'] . "</td>"
-            . "</tr>";
-    }
 
-    $table = $res . "</table>";
-
-
-    echo  $table;
-
-    ?>
+</div>
+<div id="last-workout-shell">
+    <div class="form-pos-up-part">
+        <div class="form-title">
+            <span>Последние тренеровки</span>
+        </div>
+        <div class="form-line"></div>
+        <div class="form-btns-pos">
+            <button class="form-btn-up" onClick="" name=""></button>
+        </div>
+        <div class="form-line-up"></div>
+    </div>
+    <div class="scroll-box-last-workout scroll-simple">
+        <div class="table-1">
+            <?php
+                $id = mysql_real_escape_string($_SESSION['id']);
+                $workouts = DBunit::getAllWorkouts($id);
+                $res = "<table" . " id='workouts'" . ">
+                    <tr><td><a href=\"\">Дата</td>
+                    <td><a href=\"\">Работа</td>
+                    <td><a href=\"\">Результат</td></tr>";
+                for ($i = 0; $i < count($workouts); $i++)
+                {
+                    $res = $res . "<tr>"
+                        //. "<td><a>" . $workouts[$i]['id']     . "</td>"
+                        . "<td><a>" . $workouts[$i]['date']   . "</td>"
+                        . "<td><a>" . $workouts[$i]['work']   . "</td>"
+                        . "<td><a>" . $workouts[$i]['result'] . "</td>"
+                        . "</tr>";
+                }
+                $table = $res . "</table>";
+                echo  $table;
+            ?>
+        </div>
+    </div>
+    <div class="form-pos-down-part">
+        <div class="form-line-down"></div>
+        <div class="form-btns-pos">
+            <button class="form-btn-down" onClick="" name=""></button>
+        </div>
+    </div>
 </div>

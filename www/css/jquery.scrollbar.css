@@ -1,0 +1,161 @@
+.content-container {
+    padding: 0;
+    position: relative;
+    overflow: visible;
+}
+
+.content-container .content {
+    margin: 0;
+}
+
+/* EXTERNAL SCROLLS */
+.external-scroll_x, .external-scroll_y {
+    border: solid 1px #9999fc;
+    cursor: pointer;
+    display: block;
+    position: absolute;
+}
+
+.external-scroll_x {
+    bottom: -15px;
+    height: 10px;
+    left: 0;
+    max-width: 200px;
+}
+
+.external-scroll_y {
+    right: -15px;
+    max-height: 200px;
+    top: 0;
+    width: 10px;
+}
+
+.external-scroll_x div,
+.external-scroll_y div
+{
+    height: 100%;
+    left: 0;
+    top: 0;
+    position: absolute;
+    width: 100%;
+}
+
+.external-scroll_x .scroll-bar,
+.external-scroll_y .scroll-bar {
+    background: #9999fc;
+    z-index: 12;
+}
+
+.external-scroll_x .scroll-bar {
+    width: 100px;
+}
+.external-scroll_y .scroll-bar {
+    height: 100px;
+}
+
+/* SCROLLBAR DEFAULTS */
+.scroll-wrapper {
+    overflow: hidden !important;
+    padding: 0 !important;
+    position: relative;
+}
+
+.scroll-wrapper > .scroll-content {
+    border: none !important;
+    box-sizing: content-box !important;
+    height: auto;
+    left: 0;
+    margin: 0;
+    max-height: none !important;
+    max-width: none !important;
+    overflow: scroll !important;
+    padding: 0;
+    position: relative !important;
+    top: 0;
+    width: auto !important;
+}
+
+.scroll-wrapper > .scroll-content::-webkit-scrollbar {
+    height: 0;
+    width: 0;
+}
+
+.scroll-element .scroll-bar,
+.scroll-element .scroll-arrow {
+    cursor: pointer;
+}
+
+/* .scroll-simple_inner */
+.scroll-simple_inner > .scroll-element,
+.scroll-simple_inner > .scroll-element div
+{
+    background: none;
+    border: none;
+    display: block;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    z-index: 10;
+}
+
+.scroll-simple_inner > .scroll-element div {
+    display: block;
+    height: 100%;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+
+.scroll-simple_inner > .scroll-element .scroll-element_inner {
+    display: none;
+}
+
+.scroll-simple_inner > .scroll-element .scroll-bar {
+    background-color: #fff;
+	opacity: 0.5;
+    display: none;
+}
+
+.scroll-simple_inner:hover > .scroll-element .scroll-bar {
+    display: block;
+}
+
+.scroll-simple_inner > .scroll-element.scroll-draggable .scroll-bar {
+    display: block;
+}
+
+.scroll-simple_inner > .scroll-element.scroll-x {
+    bottom: 0px;
+    height: 0px;
+    left: 0;
+    min-width: 100%;
+    overflow: visible;
+    width: 100%;
+}
+
+.scroll-simple_inner > .scroll-element.scroll-y {
+    height: 100%;
+    min-height: 100%;
+    right: 0px;
+    top: 0;
+    width: 0px;
+}
+
+.scroll-simple_inner > .scroll-element.scroll-x .scroll-bar {
+    height: 10px;
+    top: -14px;
+}
+
+.scroll-simple_inner > .scroll-element.scroll-y .scroll-bar {
+    left: -14px;
+    width: 10px;
+}
+
+.scroll-simple_inner > .scroll-element.scroll-x .scroll-bar { top: -14px; }
+.scroll-simple_inner > .scroll-element.scroll-y .scroll-bar { left: -14px; }
+
+.scroll-simple_inner > .scroll-element.scroll-x .scroll-element_outer { left: 4px; }
+.scroll-simple_inner > .scroll-element.scroll-x .scroll-element_size { left: -8px; }
+
+.scroll-simple_inner > .scroll-element.scroll-y .scroll-element_outer { top: 4px; }
+.scroll-simple_inner > .scroll-element.scroll-y .scroll-element_size { top: -8px; }

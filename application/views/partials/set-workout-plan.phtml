@@ -1,4 +1,4 @@
-<div id="set-workout-plan">
+<!--<div id="set-workout-plan">
     <form class="form-horizontal" role="form" id="setWeek">
         <div class="form-group">
             <label class="col-sm-2 control-label">Начало недели</label>
@@ -59,6 +59,80 @@
         <div class="col-sm-offset-2 col-sm-10">
             <button type="button" class="btn btn-primary" id="button-add-workout-plan" onclick="addNewDay(this);">Добавить день</button>
             <button type="button" class="btn btn-primary" id="button-set-workout-plan" onclick="setWorkoutPlan();">Записать план тренировок</button>
+        </div>
+    </div>
+</div>
+-->
+<div id="form-filling-shell">
+    <div class="form-pos-up-part">
+        <div class="form-title">
+            <span>Форма заполнения</span>
+        </div>
+        <div class="form-line"></div>
+        <div class="form-btns-pos">
+            <button class="form-btn-up" onClick="" name=""></button>
+        </div>
+        <div class="form-line-up"></div>
+    </div>
+    <div class="scroll-box-2 scroll-simple">
+        <form class="form-horizontal" role="form" id="setWeek">
+            <div class="form-filling-cont">
+                <div class="coach-lbl">Укажите дату начала недели:</div>
+                <input type="text" class="form-filling-input" id="inputBeginDate" placeholder="Начало недели">
+                <!--<select class="select-coach" id="inputBeginDate">
+                    <option value="" selected="selected">ДД.ММ.ГГГГ</option>
+                    <option value="">03.05.1991</option>
+                    <option value="">17.12.2013</option>
+                </select>-->
+                <div class="clr"></div>
+                <div class="coach-lbl">Укажите дату конца недели:</div>
+                <input type="text" class="form-filling-input" id="inputEndDate" placeholder="Конец недели">
+                <div class="clr"></div>
+                <div class="coach-lbl">Комментарии:</div>
+                <input type="text" class="form-filling-input" id="inputComments">
+                <div class="clr"></div>
+                <!--<select class="select-coach" id="inputEndDate">
+                    <option value="" selected="selected">ДД.ММ.ГГГГ</option>
+                    <option value="">03.05.1991</option>
+                    <option value="">17.12.2013</option>
+                </select>-->
+                <div class="clr"></div>
+                <div class="day" id="firstDay">
+                    <div class="coach-lbl">Выберите день недели:</div>
+                    <select class="select-day-coach" id="workout-day1">
+                        <option value="" selected="selected"></option>
+                        <option value="">Пн</option>
+                        <option value="">Вт</option>
+                        <option value="">Ср</option>
+                        <option value="">Чт</option>
+                        <option value="">Пт</option>
+                        <option value="">Сб</option>
+                        <option value="">Вс</option>
+                    </select>
+                    <div class="clr"></div>
+                    <div class="coach-lbl">Работа:</div>
+                    <input type="text" class="form-filling-input" id="inputWork1">
+                    <div class="clr"></div>
+                    <div class="coach-lbl">Результат:</div>
+                    <input type="text" class="form-filling-input" id="inputResult1">
+                    <div class="clr"></div>
+                    <div class="coach-lbl">Комментарии:</div>
+                    <input type="text" class="form-filling-input" id="inputComments1">
+                    <div class="clr"></div>
+                </div>
+            </div>
+        </form>
+        <div class="coach-btns">
+            <button type="button" class="btn-1" id="button-add-workout-plan" onclick="addNewDay(this);">Добавить день</button>
+            <button type="button" class="btn-1" id="button-set-workout-plan" onclick="setWorkoutPlan();"><Записать></Записать></button>
+            <div class="clr"></div>
+            <hr>
+        </div>
+    </div>
+    <div class="form-pos-down-part">
+        <div class="form-line-down"></div>
+        <div class="form-btns-pos">
+            <button class="form-btn-down" onClick="" name=""></button>
         </div>
     </div>
 </div>

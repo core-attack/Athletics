@@ -114,3 +114,19 @@ div.sheet_edit a{
 .cancel-claim{
     display: none;
 }
+
+.table-2 tr td {
+    padding: 0 20px;
+}
+
+.table-2 td#name, span#week-begin-date, span#separator, span#week-end-date{
+    color: white;
+}
+
+.table-2 td#work{
+    color: blue;
+}
+
+.table-2 td#result{
+    color: coral;
+}

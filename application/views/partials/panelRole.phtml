@@ -1,0 +1,19 @@
+<div id="panel-shell">
+    <div id="panel-text">
+        <span>
+            <?php
+                echo DBunit::getRoleNameByMD5Id();
+            ?>
+        </span>
+    </div>
+    <div id="panel-btns">
+        <div><button class="panel-btn left" ><?php
+            $info = DBunit::getUserInfo($_SESSION['id']);
+            echo $info['login'];
+            ?></button>
+        </div>
+        <div id="panel-btns-sepor"></div>
+        <div><button class="panel-btn" onclick="exit();">Выход</button></div>
+    </div>
+</div>
+<div class="clr"></div>

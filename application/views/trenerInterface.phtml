@@ -1,15 +1,44 @@
 <?php
 echo $this->partial('header', $this);
-//личные данные
-echo $this->partial('information-card', $this);
-//форма записи планов тренировок
-echo $this->partial('set-workout-plan', $this);
-//последние планы тренировок
-echo $this->partial('workout-plans', $this);
-//предстоящие соревнования
-echo $this->partial('sport-events', $this);
-//создать соренование
-echo $this->partial('set-sport-events', $this);
+echo $this->partial('panelRole', $this);
 ?>
+<div id="main">
+    <div id="coach-btns-panel">
+        <div><button class="coach-btn" onClick="hide_show_coach1(); return false;">Форма заполнения плана тренеровок</button></div>
+        <hr>
+        <div><button class="coach-btn" onClick="hide_show_coach2(); return false;">Последние планы тренеровок</button></div>
+    </div>
+    <?php
+    //форма записи планов тренировок
+    echo $this->partial('set-workout-plan', $this);
+    //последние планы тренировок
+    echo $this->partial('workout-plans', $this);
+    ?>
+    <div id="coach-info-shell">
+        <div id="info-left">
+            <?php
+                //мои спортсмены
+                echo $this->partial('myAthletes', $this);
+            ?>
+        </div>
+        <div id="info-mid">
+            <div id="coach-four-vert-line">
+                <div id="coach-triple-vert-line"></div>
+            </div>
+        </div>
+        <div id="info-right">
+            <?php
+                //личные данные
+                echo $this->partial('information-card', $this);
 
-<?php echo $this->partial('footer', $this); ?>
+            ?>
+        </div>
+    </div>
+    <?php
+    //предстоящие соревнования
+    echo $this->partial('sport-events', $this);
+    //создать соренование
+    echo $this->partial('set-sport-events', $this);
+
+    echo $this->partial('footer', $this); ?>
+</div>

@@ -1,4 +1,4 @@
-<div id="upcoming-competitions-shell">
+<div id="upcoming-contest-shell">
     <div class="form-pos-up-part">
         <div class="form-title">
             <span>Предстоящие соревнования</span>
@@ -9,27 +9,19 @@
         </div>
         <div class="form-line-up"></div>
     </div>
-    <div class="scroll-box-2 scroll-simple">
+    <div class="scroll-box scroll-simple">
         <div class="table-1">
             <?php
             $events = DBunit::getNextEvents();
             $res = "<table" . " id='sporting-events'" . ">
                     <tr><td><a href=\"\">Дата</td>
                     <td><a href=\"\">Наименование</td>
-                    <td><a href=\"\">Страна</td>
-                    <td><a href=\"\">Город</td>
-                    <td><a href=\"\">Адрес</td>
-                    <td><a href=\"\">Дата закрытия</td>
-                    <td><a href=\"\"></td></tr>";
+                    <td></td></tr>";
             for ($i = 0; $i < count($events); $i++)
             {
                 $res = $res . "<tr>"
                     . "<td>" . $events[$i]['event_date']    . "</td>"
                     . "<td>" . $events[$i]['name']          . "</td>"
-                    . "<td>" . $events[$i]['country']       . "</td>"
-                    . "<td>" . $events[$i]['city']          . "</td>"
-                    . "<td>" . $events[$i]['address']       . "</td>"
-                    . "<td>" . $events[$i]['close_date']    . "</td>"
                     . "<td>" . "<button type=\"button\" class=\"btn-1\" id=\"button-send-claim-" . $events[$i]['id'] . "\" event-id=\""
                     . $events[$i]['id'] . "\"onclick=\"sendClaim(this);\" >Подать заявку</button>"
                     . "<button type=\"button\" class=\"btn-1 cancel-claim\" id=\"button-cancel-claim-" . $events[$i]['id'] . "\" event-id=\""

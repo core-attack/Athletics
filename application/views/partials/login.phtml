@@ -1,4 +1,4 @@
-<div class="login">
+<!--<div class="login">
   <form class="form-horizontal" action="?action=auth" method="post">
     <div class="control-group">
       <label class="control-label" for="inputEmail">Логин</label>
@@ -24,4 +24,94 @@
        </div>
      </div>
    </form>
- </div>
+ </div>-->
+<div class="clr"></div>
+<div id="panel-shell"></div>
+<div class="clr"></div>
+<div id="slider">
+    <ul id="my-slider">
+        <li><img src="slider/pic1.jpg" alt=""/></li>
+        <li><img src="slider/pic2.jpg" alt=""/></li>
+    </ul>
+</div>
+<div id="main">
+    <hr>
+    <div align="center">
+        <button class="btn-1" id="enter-button" onClick="hide_show1(); return false;">Вход</button>
+    </div>
+    <hr>
+    <div align="center">
+        <button class="btn-1" id="reg-button" onClick="hide_show2(); return false;">Регистрация</button>
+    </div>
+    <hr>
+    <!-- Форма входа --->
+    <form id="enter-form" action="?action=auth" method="post">
+        <div id="enter-form-text">Логин:</div>
+        <input type="text" class="input-enter-form" id="inputLogin" placeholder="Login" onchange="loginBlurFocus();" name="login" required autofocus>
+        <div class="clr"></div>
+        <div id="enter-form-text">Пароль:</div>
+        <input type="password" class="input-enter-form" id="inputPassword" placeholder="Password" onkeypress="passBlurFocus();" name="password" required>
+        <div>
+            <label class="label-checkbox-align-rem"><input type="checkbox">Запомнить меня</label>
+            <button class="btn-2" id="enter-form-ok" onClick="">OK</button>
+        </div>
+    </form>
+    <!-- Форма регистрации --->
+    <form id="reg-form" action="?action=register" method="post">
+        <div class="reg-form-text">Фамилия:</div>
+        <input type="text" class="input-reg-form" name="name" required>
+        <div class="clr"></div>
+        <div class="reg-form-text">Имя:</div>
+        <input type="text" class="input-reg-form" name="sName" required>
+        <div class="clr"></div>
+        <div class="reg-form-text">Отчество:</div>
+        <input type="text" class="input-reg-form" name="lName" required>
+        <div class="clr"></div>
+        <div class="reg-form-text">Пол:</div>
+        <div id="gender-shell">
+            <label class="label-checkbox-align-gender"><input type="checkbox" value="1" name="[1]">М</label>
+            <label class="label-checkbox-align-gender"><input type="checkbox" value="1" name="[1]">Ж</label>
+            <script>
+                $("input:checkbox").click(function() {
+                    if ($(this).is(":checked")) {
+                        var group = "input:checkbox[name='" + $(this).attr("name") + "']";
+                        $(group).prop("checked", false);
+                        $(this).prop("checked", true);
+                    } else {
+                        $(this).prop("checked", false);
+                    }
+                });
+            </script>
+        </div>
+        <div class="clr"></div>
+        <div class="reg-form-text">E-mail:</div>
+        <input type="text" class="input-reg-form" name="email" required>
+        <div class="clr"></div>
+        <div class="reg-form-text">Родился:</div>
+        <input type="text" class="input-reg-form" name="borndate" required>
+        <div class="clr"></div>
+        <div class="reg-form-text">ИНН:</div>
+        <input type="text" class="input-reg-form" name="tin" required>
+        <div class="clr"></div>
+        <div class="reg-form-text">Паспорт:</div>
+        <input type="text" class="input-reg-form" name="passport" required>
+        <div class="clr"></div>
+        <div class="reg-form-text">Логин:</div>
+        <input type="text" class="input-reg-form" name="login" required>
+        <div class="clr"></div>
+        <div class="reg-form-text">Пароль:</div>
+        <input type="password" class="input-reg-form" name="newPassword" required>
+        <div class="clr"></div>
+        <div class="reg-form-text">Повторить:</div>
+        <input type="password" class="input-reg-form" name="repeatNewPassword" required>
+        <div class="clr"></div>
+        <div class="reg-form-text">Роль:</div>
+        <select id="select-role" name="role">
+            <option value="" selected="selected"></option>
+            <option value="2">Спортсмен</option>
+            <option value="3">Тренер</option>
+        </select>
+        <div class="clr"></div>
+        <button class="btn-2" id="reg-form-ok" onClick="">OK</button>
+    </form>
+</div>

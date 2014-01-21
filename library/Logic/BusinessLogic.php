@@ -21,10 +21,14 @@ class BusinessLogic
     
     public function authUser()
     {
-        $login = mysql_real_escape_string($_POST['login']);
-        $password = mysql_real_escape_string($_POST['password']);
+        //echo $_POST['login'] . $_POST['password'];
+        //я не знаю почему, что эти функции возвращают пустые строки...
+        //$login = mysql_real_escape_string($_POST['login']);
+        //$password = mysql_real_escape_string($_POST['password']);
+        $login = $_POST['login'];
+        $password = $_POST['password'];
         if(DBunit::checkLoginPassword($login, $password)){
-            DBunit::createUserSession (DBunit::getUser($login, $password));
+            DBunit::createUserSession(DBunit::getUser($login, $password));
             return true;
         }
         else {

@@ -14,7 +14,7 @@ else
     else if ($_POST["role"] == "Тренер")
         $role = 3;
     DBunit::ConnectToDB();
-    DBunit::createUser($_POST["name"], $_POST["sName"], $_POST["lName"], $_POST["email"], 1,/*$_POST["borndate"],*/ $_POST["tin"], $_POST["passport"], $role, $_POST["login"], $_POST["newPassword"]);
+    DBunit::createUser($_POST["name"], $_POST["sName"], $_POST["lName"], $_POST["email"], 15, $_POST["borndate"], $_POST["tin"], $_POST["passport"], $role, $_POST["login"], $_POST["newPassword"]);
 echo "Вы успешно зарегистрированы";
 }
 echo $this->partial('footer', $this); ?>

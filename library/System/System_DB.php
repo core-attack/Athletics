@@ -132,16 +132,17 @@ require_once('System/System_Const.php');
         static function checkLoginPassword($login, $password)
         {
             self::ConnectToDB();
-            $query = "SELECT login, password
+            $query = "SELECT login, pass
                       FROM " . ConstUnit::TABLE_USERS .
-                     " WHERE login = '" . $login . "' and password = '" . $password . "'";
+                     " WHERE login = '" . $login . "' and pass = '" . $password . "'";
             //echo '<br>' . $query . ' '. '<br>';
             $result = mysql_query($query) or die('Query failed: ' . mysql_error());
             while ($data = mysql_fetch_object($result))
             {
-                if ($data->login == $login && $data->password == $password)
+                if ($data->login == $login && $data->pass == $password)
                 {
                     //echo "Пользователь найден";
+                    //echo '1' . $login . $password;
                     return true;
                 }
                 //echo $data->login . ' ' . $data->password . '<br>';
@@ -155,10 +156,10 @@ require_once('System/System_Const.php');
         static function checkLogin($login)
         {
             self::ConnectToDB();
-            $query = "SELECT login, password
+            $query = "SELECT login, pass
                       FROM " . ConstUnit::TABLE_USERS .
                 " WHERE login = '" . $login . "'";
-            echo '<br>' . $query . ' '. '<br>';
+            //echo '<br>' . $query . ' '. '<br>';
             $result = mysql_query($query) or die('Query failed: ' . mysql_error());
             while ($data = mysql_fetch_object($result))
             {
@@ -174,7 +175,7 @@ require_once('System/System_Const.php');
         static function getId($login, $password)
         {
             $query = "SELECT md5(id)
-                      FROM " . ConstUnit::TABLE_USERS . " where login = '" . $login . "' and password = '" . $password . "'";
+                      FROM " . ConstUnit::TABLE_USERS . " where login = '" . $login . "' and pass = '" . $password . "'";
             $result = mysql_query($query) or die('Query failed: ' . mysql_error());
             return mysql_fetch_object($result)->id;
         }
@@ -182,13 +183,13 @@ require_once('System/System_Const.php');
         //пароль пользователя
         static function getPasswordById($user_id)
         {
-            $query = "SELECT password
+            $query = "SELECT pass
                       FROM " . ConstUnit::TABLE_USERS . " where md5(id) = '" . $user_id . "'";
             $result = mysql_query($query) or die('Query failed: ' . mysql_error());
-            return mysql_fetch_object($result)->password;
+            return mysql_fetch_object($result)->pass;
         }
 
-        //роль пользователя
+        //роль пользователя id
         static function getRoleById($user_id)
         {
             self::ConnectToDB();
@@ -198,23 +199,56 @@ require_once('System/System_Const.php');
             return mysql_fetch_object($result)->role_id;
         }
 
+        //роль пользователя md5(id)
+        static function getRoleByMD5Id($user_id)
+        {
+            self::ConnectToDB();
+            $query = "SELECT role_id FROM ".ConstUnit::TABLE_USERS." where md5(id) = '". $user_id . "'";
+            $result = mysql_query($query) or die('Query failed: ' . mysql_error());
+            return mysql_fetch_object($result)->role_id;
+        }
+
+        //роль пользователя name
+        static function getRoleNameByMD5Id()
+        {
+            $role_id = DBunit::getRoleByMD5Id($_SESSION['id']);
+            $query = "select name from " . ConstUnit::TABLE_ROLES . " where id = " . $role_id;
+            $result = mysql_query($query) or die('Query failed: ' . mysql_error());
+            return mysql_fetch_object($result)->name;
+        }
+
         //данные пользователя
         static function getUserInfo($user_id)
         {
-            $query = "SELECT name, sname, lname, email, borndate, tin, passport, login
+            $query = "SELECT name, sname, lname, email, borndate, tin, category_id, role_id, passport, login
                       FROM " . ConstUnit::TABLE_USERS . " where md5(id) = '" . $user_id . "'";
             $result = mysql_query($query) or die('Query failed: ' . mysql_error());
             while ($data = mysql_fetch_object($result))
             {
                 return array(
-                    "name"     => $data->name,
-                    "sname"    => $data->sname,
-                    "lname"    => $data->lname,
-                    "email"    => $data->email,
-                    "borndate" => $data->borndate,
-                    "tin"      => $data->tin,
-                    "passport" => $data->passport,
-                    "login"    => $data->login
+                    "name"          => $data->name,
+                    "sname"         => $data->sname,
+                    "lname"         => $data->lname,
+                    "email"         => $data->email,
+                    "borndate"      => $data->borndate,
+                    "tin"           => $data->tin,
+                    "category_id"   => $data->category_id,
+                    "role_id"       => $data->role_id,
+                    "passport"      => $data->passport,
+                    "login"         => $data->login
+                );
+            }
+        }
+
+        static function getUserCategory($category_id)
+        {
+            $query = "select name, full_name from " . ConstUnit::TABLE_CATEGORIES . " where id = " . $category_id;
+            $result = mysql_query($query) or die('Query failed: ' . mysql_error());
+            while ($data = mysql_fetch_object($result))
+            {
+                return array(
+                    "name"          => $data->name,
+                    "full_name"     => $data->full_name,
                 );
             }
         }
@@ -280,13 +314,13 @@ require_once('System/System_Const.php');
                 . " where athlete_id = " . $athlete_id . ""
                 . " and coach_id = " . $coach_id . ""
                 . " and workout_date = str_to_date('" . $date . "',  '%d.%m.%Y')";//fix
-            echo $query;
+            //echo $query;
             $result = mysql_query($query) or die('Query failed: ' . mysql_error());
             $res = array();
             $i = 0;
             while ($data = mysql_fetch_object($result))
             {
-                echo " id=>" . $data->id;
+                //echo " id=>" . $data->id;
                 $res[$i] = array("workout_id" => $data->id);
                 $i++;
             }
@@ -319,6 +353,7 @@ require_once('System/System_Const.php');
                 " and wwp.id = wp.workout_week_plan_id
                 and wwp.week_end_date >= curdate()
                 and wwp.week_begin_date < curdate()";
+                //echo $query;
                 $result = mysql_query($query) or die('Query failed: ' . mysql_error());
                 while ($data = mysql_fetch_object($result))
                 {
@@ -419,10 +454,10 @@ require_once('System/System_Const.php');
 
         static function getPasswordByLogin($login)
         {
-            $query = "SELECT password
+            $query = "SELECT pass
                       FROM " . ConstUnit::TABLE_USERS . " where id = " . $login;
             $result = mysql_query($query) or die('Query failed: ' . mysql_error());
-            return mysql_fetch_object($result)->password;
+            return mysql_fetch_object($result)->pass;
         }
 
         static function requestToDB($query)
@@ -485,7 +520,6 @@ require_once('System/System_Const.php');
             $query = "INSERT INTO " . ConstUnit::TABLE_RESULTS .
                 " (id, work, result, workout_id, workout_plans_id, discipline_id) " .
                 " VALUES ( '" . '' . "', '" . $work . "', '" . $result . "', " . $workout_id . ", " . $workout_plans_id . ", " . $discipline_id . "    );";
-            echo $query;
             self::requestToDB($query);
         }
         //создает роль
@@ -503,17 +537,16 @@ require_once('System/System_Const.php');
             $query = "INSERT INTO " . ConstUnit::TABLE_SPORTING_EVENTS .
                 " (id, name, event_date, close_date, country, city, address, creater_id) " .
                 " VALUES ( '" . '' . "', '" . $name . "', " . "str_to_date('" . $event_date . "', '%d.%m.%Y') , " . "str_to_date('" .  $close_date . "', '%d.%m.%Y') , '" . $country . "', '" . $city . "', '" . $address . "',   " . $id["id"] . ")";
-            echo $query;
             self::requestToDB($query);
         }
         //создает пользователя
         static function createUser($name, $sname, $lname, $email, $category_id, $borndate, $TIN, $passport, $role_id, $login, $password)
         {
             $query = "INSERT INTO " . ConstUnit::TABLE_USERS .
-                " (id, name, sname, lname, email, category_id, tin, passport, role_id, login, password) " .
+                " (id, name, sname, lname, email, category_id, borndate, tin, passport, role_id, login, pass) " .
                 " VALUES ( '" . '' . "', '" . $name . "', '" . $lname . "', '" . $sname . "', '" . $email . "', '"
                 . $category_id . "' , " . "str_to_date('" . $borndate . "', '%d.%m.%Y') , '"
-                . $TIN . " , '" . $passport . "', '". $role_id . "', '" .$login . "', '" .$password. "');";
+                . $TIN . "' , '" . $passport . "', '". $role_id . "', '" .$login . "', '" .$password. "');";
             self::requestToDB($query);
         }
         //создает план тренировки
@@ -538,7 +571,7 @@ require_once('System/System_Const.php');
             $query = "INSERT INTO " . ConstUnit::TABLE_WORKOUTS .
                 " (id, workout_date, athlete_id, coach_id) " .
                 " VALUES ( '" . '' . "', str_to_date('" . $workout_date . "',  '%d.%m.%Y'), " . (int)$athlete_id . ", " . (int)$coach_id . "  );";
-            echo " workout = " . $query;
+            //echo " workout = " . $query;
             self::requestToDB($query);
         }
 
@@ -638,7 +671,7 @@ require_once('System/System_Const.php');
             $coach_id = $coach_id["id"];
             //echo " coach_id = " . $coach_id;
             $workout_week_plan_id = DBunit::getWorkoutWeekPlanId($beginDate, $endDate, $comments, $coach_id);
-            echo " workout_week_plan_id = " . $workout_week_plan_id;
+            //echo " workout_week_plan_id = " . $workout_week_plan_id;
             $query = "insert into " . ConstUnit::TABLE_WORKOUT_PLANS
                 . "(id, week_day, workout_week_plan_id, comments) "
                 . "values ('" . '' . "', '"
@@ -647,11 +680,11 @@ require_once('System/System_Const.php');
                 . $day_comments . "'"
                 . ")"
             ;
-            echo $query;
+            //echo $query;
             self::requestToDB($query);
-            echo "хотим взять ид от плана тренировок";
+            //echo "хотим взять ид от плана тренировок";
             $id = DBunit::getWorkoutPlanId($day, $workout_week_plan_id, $day_comments);
-            echo $id;
+            //echo $id;
             DBunit::createResult($work, $result, null, $id, null);
         }
         //возвращает ид плана тренировки
@@ -662,12 +695,12 @@ require_once('System/System_Const.php');
                 . " and workout_week_plan_id = " .  $workout_week_plan_id
                 . " and comments = '" .  $comments . "'"
             ;
-            echo $query;
+            //echo $query;
             $res = mysql_query($query) or die('Query failed: ' . mysql_error());
             $id = 0;
             while ($data = mysql_fetch_object($res))
                 $id = (int)$data->id;
-            echo "id = " . $id;
+            //echo "id = " . $id;
             return $id;
         }
         //возвращает ид недельного плана тренировок
@@ -679,7 +712,7 @@ require_once('System/System_Const.php');
                 . " and comments = '" .  $comments . "'"
                 . " and coach_id = " . $coach_id . ""
             ;
-            echo $query;
+            //echo $query;
             $res = mysql_query($query) or die('Query failed: ' . mysql_error());
             while ($data = mysql_fetch_object($res))
                 return (int)$data->id;
@@ -765,7 +798,7 @@ require_once('System/System_Const.php');
         static function updatePassword($user_id, $password)
         {
             self::ConnectToDB();
-            $query = "update " . ConstUnit::TABLE_USERS . " set password='" . $password . "' where id=" . $user_id;
+            $query = "update " . ConstUnit::TABLE_USERS . " set pass='" . $password . "' where id=" . $user_id;
             $result = mysql_query($query) or die('Query failed: ' . mysql_error());
             self::CloseConnection();
         }
@@ -781,7 +814,7 @@ require_once('System/System_Const.php');
                 . " , tin=" . $tin . ""
                 . " , passport='" . $passport . "'"
                 . " , login='" . $login . "'"
-                . " , password='" . $password . "'"
+                . " , pass='" . $password . "'"
                 . " where md5(id)=" . $user_id;
             $result = mysql_query($query) or die('Query failed: ' . mysql_error());
             self::CloseConnection();
@@ -805,8 +838,9 @@ require_once('System/System_Const.php');
 
         static function createUserSession($user)
         {
-            $_SESSION['hash'] = md5($user->password);
+            $_SESSION['hash'] = md5($user->pass);
             $_SESSION['id'] = md5($user->id);
+            $_SESSION['login'] = md5($user->login);
         }
 
         static function checkUserSession()
@@ -814,7 +848,7 @@ require_once('System/System_Const.php');
             self::ConnectToDB();
             $id =  mysql_real_escape_string($_SESSION['id']);
             $hash = mysql_real_escape_string($_SESSION['hash']);
-            $sql = 'SELECT * FROM users WHERE md5(id) = \''.$id.'\' AND md5(password) = \''.$hash.'\'';
+            $sql = 'SELECT * FROM users WHERE md5(id) = \''.$id.'\' AND md5(pass) = \''.$hash.'\'';
             $result = mysql_query($sql);
             if(mysql_num_rows($result) == 1)
                 return mysql_fetch_object($result);
@@ -825,12 +859,13 @@ require_once('System/System_Const.php');
         static function getUser($login, $password)
         {
             self::ConnectToDB();
-            $login = mysql_real_escape_string($login);
-            $password = mysql_real_escape_string($password);
-            $sql = 'SELECT * FROM users WHERE login = \''.$login.'\' AND password = \''.$password.'\'';
+            //$login = mysql_real_escape_string($login);
+            //$password = mysql_real_escape_string($password);
+            $sql = 'SELECT * FROM users WHERE login = \''.$login.'\' AND pass = \''.$password.'\'';
+            //echo $sql;
             $result = mysql_query($sql);
             if(mysql_num_rows($result) == 1)
-                return mysql_fetch_object ($result);
+                return mysql_fetch_object($result);
             else
                 return null;
         }
