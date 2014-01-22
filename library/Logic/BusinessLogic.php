@@ -85,7 +85,7 @@ class BusinessLogic
                         ."borndate = '".  $this->modifyDate($_POST["borndate"])."',"
                         ."passport = ".  (int)$_POST["passport"].","
                         ."login = '".  mysql_real_escape_string($_POST["login"])."',"
-                        ."password = '".  mysql_real_escape_string($_POST["password"])."',"
+                        ."pass = '".  mysql_real_escape_string($_POST["password"])."',"
                         ."role_id = ".  (int)$_POST["role"]
                         .$end;
                 DBunit::ConnectToDB();

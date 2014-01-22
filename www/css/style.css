@@ -592,6 +592,18 @@ label.label-checkbox-align-gender input[type=checkbox]{
 	position: relative;
 	overflow: hidden;
 	}
+#admin-menu-shell li{
+    list-style: none;
+    text-align: center;
+    line-height: 80px;
+}
+#admin-menu-shell li a{
+    text-decoration: none;
+    color: #fff;
+}
+#admin-menu-shell li a:hover{
+    color: #fff;
+}
 
 #admin-menu {
 	margin-right: -15px;

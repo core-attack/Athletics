@@ -1,20 +1,37 @@
 <?php echo $this->partial('header', $this); ?>
+<script type="text/javascript" src="/js/jquery.tabify.source.js"></script>
+<script>
+$(document).ready(function()
+{
+    $("#admin-menu-shell").tabify(function(){});
+});
+</script>
 
-<div id="tabs">
-  <ul>
-    <li><a href="#tabs-1" id="sportsmens">Спортсмены</a></li>
-    <li><a href="#tabs-2" id="treners">Тренера</a></li>
-    <li><a href="#tabs-3" id="events">Мероприятия</a></li>
-  </ul>    
-    <div id="tabs-1" class="tab_block">
+    
+    
+    
+			<div id="admin-menu-shell">
+				<ul id="admin-menu">
+					<li class="admin-menu-btn" name=""><a href="#sportsmens">Спортсмены</a></li>
+					<div id="admin-menu-sepor"></div>
+					<li class="admin-menu-btn" name=""><a href="#treners">Тренеры</a></li>
+					<div id="admin-menu-sepor"></div>
+					<li class="admin-menu-btn" name=""><a href="#events">Тренеровки</a></li>
+				</ul>
+			</div>	
+    
+    
+    
+    
+    <div id="sportsmens" class="tab_block">
         <?php echo $this->partial('addingPersonForm', array('role' => BusinessLogic::ROLE_SPORTSMEN)); ?>
         <?php echo $this->partial('personsList', array('items' => $this->sportsmens)); ?>
     </div>
-    <div id="tabs-2" class="tab_block">
+    <div id="treners" class="tab_block">
         <?php echo $this->partial('addingPersonForm', array('role' => BusinessLogic::ROLE_TRENER)); ?>
         <?php echo $this->partial('personsList', array('items' => $this->treners)); ?>
     </div>
-    <div id="tabs-3" class="tab_block">
+    <div id="events" class="tab_block">
         <?php echo $this->partial('addingEventForm', $this); ?>
         <?php echo $this->partial('eventsList', $this); ?>
     </div>

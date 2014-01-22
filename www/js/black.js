@@ -6,7 +6,7 @@ $(document).ready(function()
               $('#sportsmens').trigger('click');
               break;
            case '#treners':
-              $('#treners').trigger('click');
+              $('[href=#treners-tab]').trigger('click');
               break;
            case '#events':
               $('#events').trigger('click');

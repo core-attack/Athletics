@@ -772,7 +772,7 @@ require_once('System/System_Const.php');
                 $res[] = array(
                     "id" => $item["id"],
                     "login" => $item["login"],
-                    "password" => $item["password"],
+                    "password" => $item["pass"],
                     "name" => $item["name"],
                     "sname" => $item["sname"],
                     "lname" => $item["lname"],

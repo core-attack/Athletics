@@ -1,5 +1,6 @@
 //--- Инициализация плагина кастомизации скроллбара
 $(document).ready(function(){
+    if($('.scroll-simple').length)
 	$('.scroll-simple').scrollbar({
 		"type": "simple"
 	});
@@ -28,7 +29,8 @@ $(document).ready(function(){
     };
 })(jQuery);
 jQuery(window).load(function() {
-    $('.smart_gallery').MySlider(3000);
+    if($('.smart_gallery').length)
+        $('.smart_gallery').MySlider(3000);
 });
 //--- Страница: Главная / Кнопки: Вход, Регистрация
 function hide_show1()
